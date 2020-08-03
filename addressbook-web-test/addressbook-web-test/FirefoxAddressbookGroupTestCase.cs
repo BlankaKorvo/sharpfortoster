@@ -23,7 +23,8 @@ namespace addressbook_web_test
         {
             //driver = new FirefoxDriver();
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            baseURL = "http://10.0.1.45/addressbook";
             verificationErrors = new StringBuilder();
         }
 
