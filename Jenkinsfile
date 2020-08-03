@@ -28,7 +28,4 @@ pipeline {
     }
 
   }
-  triggers {
-    upstream(upstreamProjects: 'IDKAPIServer/master', threshold: hudson.model.Result.SUCCESS)
-  }
 }
