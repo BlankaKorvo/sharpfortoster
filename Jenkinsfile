@@ -16,9 +16,9 @@ pipeline {
   post {
     always {
       emailext(attachLog: true, to: 'a.vergel@radico.ru', from: 'autotoster@radico.ru', subject: "${currentBuild.result} test ${currentBuild.fullDisplayName}", body: "Tests Report: ${env.RUN_DISPLAY_URL}")
-      archiveArtifacts(artifacts: 'NUnitTestProject/TestResults/*.trx', fingerprint: true)
-      nunit(testResultsPattern: 'NUnitTestProject/TestResults/*.xml')
-      mstest(testResultsFile: 'NUnitTestProject/TestResults/*.trx, keepLongStdio: true')
+      archiveArtifacts(artifacts: 'addressbook-web-test/addressbook-web-test/TestResults/*.trx', fingerprint: true)
+      nunit(testResultsPattern: 'addressbook-web-test/addressbook-web-test/TestResults/TestResults/*.xml')
+      mstest(testResultsFile: 'addressbook-web-test/addressbook-web-test/TestResults/*.trx, keepLongStdio: true')
     }
 
   }
