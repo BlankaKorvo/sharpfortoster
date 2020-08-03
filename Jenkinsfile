@@ -6,6 +6,12 @@ pipeline {
 
   }
   stages {
+    stage('restore') {
+      steps {
+        sh 'dotnet restore addressbook-web-test/addressbook-web-test.sln'
+      }
+    }
+
     stage('test') {
       steps {
         sh 'dotnet test addressbook-web-test/addressbook-web-test.sln --logger "trx;LogFileName=resultfile.trx"'
