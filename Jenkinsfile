@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        sh 'dotnet test addressbook-web-test.sln --logger "trx;LogFileName=resultfile.trx"'
+        sh 'dotnet test addressbook-web-test/addressbook-web-test.sln --logger "trx;LogFileName=resultfile.trx"'
       }
     }
 
