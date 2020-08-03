@@ -14,7 +14,7 @@ pipeline {
 
     stage('CleanUp') {
       steps {
-        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, deleteDirs: true, cleanWhenUnstable: true, cleanupMatrixParent: true, disableDeferredWipeout: true)
+        cleanWs()
       }
     }
 
