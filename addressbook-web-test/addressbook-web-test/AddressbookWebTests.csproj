@@ -66,10 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AccountData.cs" />
+    <Compile Include="Core\GroupData.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ChromeAddressbookGroupTestCase.cs" />
-    <Compile Include="FirefoxAddressbookGroupTestCase.cs" />
+    <Compile Include="TestingGroups\ChromeAddressbookGroupTestCase.cs" />
+    <Compile Include="TestingGroups\FirefoxAddressbookGroupTestCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
