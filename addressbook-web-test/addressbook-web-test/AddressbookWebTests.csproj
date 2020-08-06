@@ -68,7 +68,7 @@
   <ItemGroup>
     <Compile Include="CoreTestFrameWork\AccountData.cs" />
     <Compile Include="CoreTestFrameWork\Main\BaseUrl.cs" />
-    <Compile Include="CoreTestFrameWork\Main\LogonAddressBook.cs" />
+    <Compile Include="CoreTestFrameWork\Main\AccessAddressBook.cs" />
     <Compile Include="CoreTestFrameWork\Main\HomePage.cs" />
     <Compile Include="CoreTestFrameWork\GroupData.cs" />
     <Compile Include="CoreTestFrameWork\PersonData.cs" />

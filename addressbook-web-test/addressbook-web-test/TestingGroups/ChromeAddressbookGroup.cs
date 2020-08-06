@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 using CoreTestFrameWork;
 using CoreTestFrameWork.Main;
 
-namespace AddressbookGroupsTestCases
+namespace TestingGroups
 {
     [TestFixture]
     public class ChromeAddressbookGroup
@@ -43,7 +43,7 @@ namespace AddressbookGroupsTestCases
         }
 
         [Test]
-        public void CreateGroupsTest()
+        public void CreateGroupsTests()
         {
             new HomePage(driver).Open();
             new AccessAddressBook(driver).LogIn(new AccountData() { Username = "admin", Password = "secret" });

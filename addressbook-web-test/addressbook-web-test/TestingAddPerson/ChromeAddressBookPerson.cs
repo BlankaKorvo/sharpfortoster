@@ -11,7 +11,7 @@ using CoreTestFrameWork;
 using CoreTestFrameWork.Main;
 using addressbook_web_test.CoreTestFrameWork;
 
-namespace ChromeAddressBookPerson
+namespace TestingAddPerson
 {
     [TestFixture]
     public class ChromeAddressBookPerson
@@ -43,7 +43,7 @@ namespace ChromeAddressBookPerson
         }
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void CreatePersonTests()
         {
             new HomePage(driver).Open();
             new AccessAddressBook(driver).LogIn(new AccountData() { Username = "admin", Password = "secret" });
