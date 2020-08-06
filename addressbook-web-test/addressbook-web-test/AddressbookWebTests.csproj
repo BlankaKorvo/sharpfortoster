@@ -66,12 +66,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\AccountData.cs" />
-    <Compile Include="Core\GroupData.cs" />
+    <Compile Include="CoreTestFrameWork\AccountData.cs" />
+    <Compile Include="CoreTestFrameWork\Main\BaseUrl.cs" />
+    <Compile Include="CoreTestFrameWork\Main\LogonAddressBook.cs" />
+    <Compile Include="CoreTestFrameWork\Main\HomePage.cs" />
+    <Compile Include="CoreTestFrameWork\GroupData.cs" />
+    <Compile Include="CoreTestFrameWork\PersonData.cs" />
+    <Compile Include="TestingAddPerson\ChromeAddressBookPerson.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestingGroups\ChromeAddressbookGroupTestCase.cs" />
-    <Compile Include="TestingGroups\FirefoxAddressbookGroupTestCase.cs" />
+    <Compile Include="TestingGroups\ChromeAddressbookGroup.cs" />
+    <Compile Include="TestingGroups\FirefoxAddressbookGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

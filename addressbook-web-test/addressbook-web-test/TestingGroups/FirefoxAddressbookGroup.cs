@@ -8,11 +8,12 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using CoreTestFrameWork;
+using CoreTestFrameWork.Main;
 
-namespace AddressbookGroupsTestCase
+namespace AddressbookGroupsTestCases
 {
     [TestFixture]
-    public class FirefoxAddressbookGroupTestCase
+    public class FirefoxAddressbookGroup
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -44,22 +45,17 @@ namespace AddressbookGroupsTestCase
         }
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void CreateGroupsTest()
         {
-            OpenHomePage();
-            Login(new AccountData("admin", "secret"));
+            new HomePage(driver).Open();
+            new AccessAddressBook(driver).LogIn(new AccountData() { Username = "admin", Password = "secret" });
             GoToGroupsPage();
             InitNewGroupCreation();
             FillGroupForm(new GroupData("name 1", "group 1", "footer 1"));
             SubmitGroupCreation();
             ReturnToGroupsPage();
             DeleteGroup();
-            LogOut();
-        }
-
-        private void LogOut()
-        {
-            driver.FindElement(By.LinkText("Logout")).Click();
+            new AccessAddressBook(driver).LogOut();
         }
 
         private void DeleteGroup()
@@ -101,21 +97,6 @@ namespace AddressbookGroupsTestCase
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
-        private void Login(AccountData account)
-        {
-            driver.FindElement(By.Name("user")).Click();
-            driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            driver.FindElement(By.Name("pass")).Click();
-            driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
-            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-        }
-
-        private void OpenHomePage()
-        {
-            driver.Navigate().GoToUrl(baseURL + "/addressbook");
-        }
 
         private bool IsElementPresent(By by)
         {
@@ -166,4 +147,3 @@ namespace AddressbookGroupsTestCase
         }
     }
 }
-
