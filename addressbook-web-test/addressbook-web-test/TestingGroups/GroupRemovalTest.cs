@@ -21,6 +21,7 @@ namespace TestingGroups
             OpenHomePage();
             LogIn(new AccountData() { Username = "admin", Password = "secret" });
             GoToGroupsPage();
+            SelectGroup(1);
             DeleteGroup();
             LogOut();
         }

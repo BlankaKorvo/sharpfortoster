@@ -61,10 +61,14 @@ namespace TestingFrameworkLibrary
         {
             driver.FindElement(By.LinkText("Logout")).Click();
         }
+
+        protected void SelectGroup(int index)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+        }
         protected void DeleteGroup()
         {
-            driver.FindElement(By.Name("selected[]")).Click();
-            driver.FindElement(By.XPath("(//input[@name='delete'])[2]")).Click();
+            driver.FindElement(By.Name("delete")).Click();
         }
 
         protected void ReturnToGroupsPage()
@@ -99,10 +103,14 @@ namespace TestingFrameworkLibrary
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
+        protected void SelectPersonFromAddressBook(int index) //счет начинается с "2"
+        {
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr["+ index +"]/td/input")).Click();
+            acceptNextAlert = true;
+        }
+
         protected void DeletePersonFromAddressBook()
         {
-            driver.FindElement(By.Name("selected[]")).Click();
-            acceptNextAlert = true;
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
         }

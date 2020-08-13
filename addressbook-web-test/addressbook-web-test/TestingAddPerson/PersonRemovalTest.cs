@@ -21,6 +21,7 @@ namespace TestingAddPerson
         {
             OpenHomePage();
             LogIn(new AccountData() { Username = "admin", Password = "secret" });
+            SelectPersonFromAddressBook(2); //счет начинается с "2"
             DeletePersonFromAddressBook();
             LogOut();
         }
