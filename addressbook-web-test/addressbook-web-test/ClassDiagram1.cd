@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TestingFrameworkLibrary.TestBase">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAIAAAQAIABAAABCAhEAAADAAAAJMBCAAAAAAQAAIDA=</HashCode>
+      <FileName>TestingFrameworkLibrary\TestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingGroups.GroupCreationTest" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>TestingGroups\GroupCreationTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingGroups.GroupRemovalTest" Collapsed="true">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TestingGroups\GroupRemovalTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingAddPerson.PersonCreationTest" Collapsed="true">
+    <Position X="1.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>TestingAddPerson\PersonCreationTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingAddPerson.PersonRemovalTest" Collapsed="true">
+    <Position X="1.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>TestingAddPerson\PersonRemovalTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
