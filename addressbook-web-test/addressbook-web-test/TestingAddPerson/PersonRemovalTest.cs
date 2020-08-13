@@ -17,7 +17,7 @@ namespace TestingAddPerson
 
     {
         [Test]
-        public void CreatePersonTests()
+        public void RemovePersonTests()
         {
             OpenHomePage();
             LogIn(new AccountData() { Username = "admin", Password = "secret" });

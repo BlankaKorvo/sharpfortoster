@@ -16,7 +16,7 @@ namespace TestingGroups
     public class GroupRemovalTest : TestBase
     {
         [Test]
-        public void CreateGroupsTests()
+        public void RemoveGroupsTests()
         {
             OpenHomePage();
             LogIn(new AccountData() { Username = "admin", Password = "secret" });
