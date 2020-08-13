@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoreTestFrameWork
 {
-    class AccountData
+    public class AccountData
     {
         public string Username { get; set; }
 

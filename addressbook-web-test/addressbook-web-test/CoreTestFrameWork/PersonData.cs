@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace addressbook_web_test.CoreTestFrameWork
+namespace CoreTestFrameWork
 {
-    class PersonData
+    public class PersonData
     {
         public string FirstName { get; set; } = "";
         public string MiddleName { get; set; } = "";

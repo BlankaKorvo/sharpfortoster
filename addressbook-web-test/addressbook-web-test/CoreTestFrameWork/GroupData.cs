@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoreTestFrameWork
 {
-    class GroupData
+    public class GroupData
     {
         private string name;
         private string header;
