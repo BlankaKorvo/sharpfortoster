@@ -46,6 +46,14 @@ namespace TestingFrameworkLibrary
         {
             driver.FindElement(By.Name("new")).Click();
         }
+        public void InitGroupEdition()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+        }
+        public void SubmitGroupEdition()
+        {
+            driver.FindElement(By.Name("update")).Click();
+        }
 
     }
 }

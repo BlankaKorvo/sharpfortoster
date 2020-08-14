@@ -16,14 +16,14 @@ namespace TestingGroups
     public class GroupRemovalTest : TestBase
     {
         [Test]
-        public void RemoveGroupsTests()
+        public void RemoveGroupTests()
         {
-            navigationHelper.OpenHomePage();
-            loginHelper.LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            navigationHelper.OpenGroupsPage();
-            groupHelper.SelectGroup(1);
-            groupHelper.DeleteGroup();
-            loginHelper.LogOut();
+            app.Navigator.OpenHomePage();
+            app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
+            app.Navigator.OpenGroupsPage();
+            app.Groups.SelectGroup(1);
+            app.Groups.DeleteGroup();
+            app.Auth.LogOut();
         }
     }
 }

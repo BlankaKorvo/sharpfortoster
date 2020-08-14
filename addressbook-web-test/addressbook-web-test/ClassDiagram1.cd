@@ -2,82 +2,93 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="TestingFrameworkLibrary.TestBase">
     <Position X="4" Y="3.25" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAQAIAAAAABAAAAAAATAAAAAAAAAABCAAAEAACA=</HashCode>
-      <FileName>TestingFrameworkLibrary\TestBase.cs</FileName>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>appmanager\TestBase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="groupHelper" />
-      <Field Name="loginHelper" />
-      <Field Name="navigationHelper" />
-      <Field Name="contactHelper" />
+      <Field Name="app" />
     </ShowAsAssociation>
   </Class>
   <Class Name="TestingGroups.GroupCreationTest" Collapsed="true">
     <Position X="5.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>TestingGroups\GroupCreationTest.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>tests\TestingGroups\GroupCreationTest.cs</FileName>
+      <NewMemberFileName>Tests\TestingGroups\GroupCreationTest.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingGroups.GroupRemovalTest" Collapsed="true">
     <Position X="6.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TestingGroups\GroupRemovalTest.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>tests\TestingGroups\GroupRemovalTest.cs</FileName>
+      <NewMemberFileName>Tests\TestingGroups\GroupRemovalTest.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingAddPerson.PersonCreationTest" Collapsed="true">
     <Position X="3.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
-      <FileName>TestingAddPerson\PersonCreationTest.cs</FileName>
+      <FileName>tests\TestingAddPerson\PersonCreationTest.cs</FileName>
+      <NewMemberFileName>Tests\TestingAddPerson\PersonCreationTest.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingAddPerson.PersonRemovalTest" Collapsed="true">
     <Position X="1.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
-      <FileName>TestingAddPerson\PersonRemovalTest.cs</FileName>
+      <FileName>tests\TestingAddPerson\PersonRemovalTest.cs</FileName>
+      <NewMemberFileName>Tests\TestingAddPerson\PersonRemovalTest.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingFrameworkLibrary.GroupHelper" Collapsed="true">
     <Position X="3" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAAAAAEAAAAAAAABEAAAAAAAAAAAABA=</HashCode>
-      <FileName>TestingFrameworkLibrary\GroupHelper.cs</FileName>
+      <HashCode>AAAAAAAAAABAAAAAABEAAAAAAAABEAAAAAAAAAAAIBA=</HashCode>
+      <FileName>appmanager\GroupHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingFrameworkLibrary.LoginHelper" Collapsed="true">
     <Position X="5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>TestingFrameworkLibrary\LoginHelper.cs</FileName>
+      <FileName>appmanager\LoginHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingFrameworkLibrary.NavigationHelper" Collapsed="true">
     <Position X="7.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAIIACAAAAAAAAAACA=</HashCode>
-      <FileName>TestingFrameworkLibrary\NavigationHelper.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIIIACAAAAAAAAAACA=</HashCode>
+      <FileName>appmanager\NavigationHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingFrameworkLibrary.ContactHelper" Collapsed="true">
     <Position X="1" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABIAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>TestingFrameworkLibrary\ContactHelper.cs</FileName>
+      <FileName>appmanager\ContactHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingFrameworkLibrary.HelperBase" Collapsed="true">
     <Position X="4" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAABAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TestingFrameworkLibrary\HelperBase.cs</FileName>
+      <FileName>appmanager\HelperBase.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="TestingFrameworkLibrary.ApplicationManager" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAEQABAAABAAAAAAAAASAAAAAAAAAABCAABEAACA=</HashCode>
+      <FileName>appmanager\ApplicationManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="loginHelper" />
+      <Field Name="navigationHelper" />
+      <Field Name="groupHelper" />
+      <Field Name="contactHelper" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
