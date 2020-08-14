@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreTestFrameWork
 {
-    public class PersonData
+    public class ContactData
     {
         public string FirstName { get; set; } = "";
         public string MiddleName { get; set; } = "";

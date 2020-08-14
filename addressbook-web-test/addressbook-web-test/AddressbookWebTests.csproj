@@ -67,12 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreTestFrameWork\AccountData.cs" />
-    <Compile Include="CoreTestFrameWork\Main\BaseUrl.cs" />
-    <Compile Include="CoreTestFrameWork\Main\AccessAddressBook.cs" />
-    <Compile Include="CoreTestFrameWork\Main\HomePage.cs" />
     <Compile Include="CoreTestFrameWork\GroupData.cs" />
     <Compile Include="CoreTestFrameWork\PersonData.cs" />
     <Compile Include="TestingAddPerson\PersonRemovalTest.cs" />
+    <Compile Include="TestingFrameworkLibrary\ContactHelper.cs" />
+    <Compile Include="TestingFrameworkLibrary\GroupHelper.cs" />
+    <Compile Include="TestingFrameworkLibrary\HelperBase.cs" />
+    <Compile Include="TestingFrameworkLibrary\LoginHelper.cs" />
+    <Compile Include="TestingFrameworkLibrary\NavigationHelper.cs" />
     <Compile Include="TestingFrameworkLibrary\TestBase.cs" />
     <Compile Include="TestingAddPerson\PersonCreationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,14 +18,14 @@ namespace TestingGroups
         [Test]
         public void CreateGroupsTests()
         {
-            OpenHomePage();
-            LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            GoToGroupsPage();
-            InitNewGroupCreation();
-            FillGroupForm(new GroupData("name 1", "group 1", "footer 1"));
-            SubmitGroupCreation();
-            OpenHomePage();
-            LogOut();
+            navigationHelper.OpenHomePage();
+            loginHelper.LogIn(new AccountData() { Username = "admin", Password = "secret" });
+            navigationHelper.OpenGroupsPage();
+            groupHelper.InitNewGroupCreation();
+            groupHelper.FillGroupForm(new GroupData("name 1", "group 1", "footer 1"));
+            groupHelper.SubmitGroupCreation();
+            navigationHelper.OpenHomePage();
+            loginHelper.LogOut();
         }        
     }
 }
