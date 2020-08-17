@@ -18,12 +18,11 @@ namespace TestingGroups
         [Test]
         public void RemoveGroupTests()
         {
-            app.Navigator.OpenHomePage();
-            app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            app.Navigator.OpenGroupsPage();
-            app.Groups.SelectGroup(1);
-            app.Groups.DeleteGroup();
-            app.Auth.LogOut();
+            appManager.Navigator.OpenGroupsPage();
+            appManager.Groups
+                .SelectGroup(1)
+                .DeleteGroup();
+            appManager.Auth.LogOut();
         }
     }
 }

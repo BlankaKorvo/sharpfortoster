@@ -18,14 +18,19 @@ namespace TestingGroups
         [Test]
         public void CreateGroupTests()
         {
-            app.Navigator.OpenHomePage();
-            app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            app.Navigator.OpenGroupsPage();
-            app.Groups.InitNewGroupCreation();
-            app.Groups.FillGroupForm(new GroupData("name 1", "group 1", "footer 1"));
-            app.Groups.SubmitGroupCreation();
-            app.Navigator.OpenHomePage();
-            app.Auth.LogOut();
-        }        
+            GroupData group = new GroupData("name 1", "group 1", "footer 1");
+            appManager.Navigator.OpenGroupsPage();
+            appManager.Groups.CreateGroup(group);
+            appManager.Navigator.OpenHomePage();
+            appManager.Auth.LogOut();
+        }
+        public void CreateEmptyGroupTests()
+        {
+            GroupData group = new GroupData("", "", "");
+            appManager.Navigator.OpenGroupsPage();
+            appManager.Groups.CreateGroup(group);
+            appManager.Navigator.OpenHomePage();
+            appManager.Auth.LogOut();
+        }
     }
 }

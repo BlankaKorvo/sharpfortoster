@@ -11,29 +11,30 @@ namespace TestingFrameworkLibrary
 {
     public class ApplicationManager
     {
-        protected IWebDriver driver = new ChromeDriver();
-        private StringBuilder verificationErrors = new StringBuilder();
-        protected string baseURL = "http://10.0.1.45";
+        protected IWebDriver driver;
+        protected string baseURL;
 
-        protected LoginHelper loginHelper;
+        protected LoginHelper loginHelper; 
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
+        public ApplicationManager()
+        {
+            driver = new ChromeDriver();
+            baseURL = "http://10.0.1.45";
+            loginHelper = new LoginHelper(this);
+            navigationHelper = new NavigationHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
+        }
 
         public LoginHelper Auth => loginHelper;
         public NavigationHelper Navigator => navigationHelper;
         public GroupHelper Groups => groupHelper;
-        public ContactHelper Contacts => contactHelper; 
+        public ContactHelper Contacts => contactHelper;
+        public IWebDriver Driver => driver;
 
-        public ApplicationManager()
-        {
-            loginHelper = new LoginHelper(driver);
-            navigationHelper = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
-            contactHelper = new ContactHelper(driver);
-        }
 
-   
         public void StopTest()
         {                
             try

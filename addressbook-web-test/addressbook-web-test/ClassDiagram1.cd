@@ -73,14 +73,14 @@
   <Class Name="TestingFrameworkLibrary.HelperBase" Collapsed="true">
     <Position X="4" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAABAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAABAAAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>appmanager\HelperBase.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingFrameworkLibrary.ApplicationManager" Collapsed="true">
     <Position X="4" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAEQABAAABAAAAAAAAASAAAAAAAAAABCAABEAACA=</HashCode>
+      <HashCode>BAAAAEAABAAABAAAAAAAAASAAAAAgAAAABCAABEAACA=</HashCode>
       <FileName>appmanager\ApplicationManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

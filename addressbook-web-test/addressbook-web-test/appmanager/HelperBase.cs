@@ -15,11 +15,13 @@ namespace TestingFrameworkLibrary
     public class HelperBase
     {
         protected IWebDriver driver;
-        protected bool acceptNextAlert = true;
+        protected ApplicationManager manager;
+        private bool acceptNextAlert = true;
 
-        public HelperBase(IWebDriver driver)
+        public HelperBase(ApplicationManager manager)
         {
-            this.driver = driver;
+            this.manager = manager; 
+            driver = manager.Driver;
         }
         public string CloseAlertAndGetItsText()
         {

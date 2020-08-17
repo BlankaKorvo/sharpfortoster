@@ -14,29 +14,31 @@ namespace TestingFrameworkLibrary
 {
     public class ContactHelper : HelperBase
     {
-        public ContactHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {            
         }
-        public void SelectContactFromAddressBook(int index) //счет начинается с "2"
+        public ContactHelper SelectContactFromAddressBook(int index) //счет начинается с "2"
         {
             driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td/input")).Click();
-            //acceptNextAlert = true;
+            return this;
         }
 
-        public void DeleteContactFromAddressBook()
+        public ContactHelper DeleteContactFromAddressBook()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
+            return this;
         }
 
 
 
-        public void SubmitContactCreation()
+        public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            return this;
         }
 
-        public void FillContactForm(ContactData personData)
+        public ContactHelper FillContactForm(ContactData personData)
         {
             OpenEditAddressBookEntry();
             driver.FindElement(By.Name("firstname")).Click();
@@ -117,11 +119,13 @@ namespace TestingFrameworkLibrary
             driver.FindElement(By.Name("notes")).Click();
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(personData.Note);
+            return this;
         }
 
-        public void OpenEditAddressBookEntry()
+        public ContactHelper OpenEditAddressBookEntry()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
         }
     }
 }

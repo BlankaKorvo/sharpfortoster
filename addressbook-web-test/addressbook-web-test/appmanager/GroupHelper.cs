@@ -12,24 +12,36 @@ namespace TestingFrameworkLibrary
 {
     public class GroupHelper : HelperBase
     {
-        public GroupHelper (IWebDriver driver) : base(driver)
+        public GroupHelper (ApplicationManager manager) : base(manager)
         {
         }
 
-        public void SelectGroup(int index)
+        public GroupHelper CreateGroup(GroupData group)
+        {
+            InitNewGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            ReturnToGroupsPage(); 
+            return this;
+        }
+
+        public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            return this;
         }
-        public void DeleteGroup()
+        public GroupHelper DeleteGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
+            return this;
         }
-        public void SubmitGroupCreation()
+        public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            return this;
         }
 
-        public void FillGroupForm(GroupData groupdata)
+        public GroupHelper FillGroupForm(GroupData groupdata)
         {
             driver.FindElement(By.Name("group_name")).Click();
             driver.FindElement(By.Name("group_name")).Clear();
@@ -40,19 +52,28 @@ namespace TestingFrameworkLibrary
             driver.FindElement(By.Name("group_footer")).Click();
             driver.FindElement(By.Name("group_footer")).Clear();
             driver.FindElement(By.Name("group_footer")).SendKeys(groupdata.Footer);
+            return this;
         }
 
-        public void InitNewGroupCreation()
+        public GroupHelper InitNewGroupCreation()
         {
             driver.FindElement(By.Name("new")).Click();
+            return this;
         }
-        public void InitGroupEdition()
+        public GroupHelper InitGroupEdition()
         {
             driver.FindElement(By.Name("edit")).Click();
+            return this;
         }
-        public void SubmitGroupEdition()
+        public GroupHelper SubmitGroupEdition()
         {
             driver.FindElement(By.Name("update")).Click();
+            return this; 
+        }
+        public GroupHelper ReturnToGroupsPage()
+        {
+            driver.FindElement(By.LinkText("group page")).Click();
+            return this;
         }
 
     }

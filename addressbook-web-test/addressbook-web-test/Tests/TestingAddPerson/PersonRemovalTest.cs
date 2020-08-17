@@ -19,11 +19,10 @@ namespace TestingAddPerson
         [Test]
         public void RemovePersonTests()
         {
-            app.Navigator.OpenHomePage();
-            app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            app.Contacts.SelectContactFromAddressBook(2); //счет начинается с "2"
-            app.Contacts.DeleteContactFromAddressBook();
-            app.Auth.LogOut();
+            appManager.Contacts
+                .SelectContactFromAddressBook(2) //счет начинается с "2"
+                .DeleteContactFromAddressBook();
+            appManager.Auth.LogOut();
         }
     }
 

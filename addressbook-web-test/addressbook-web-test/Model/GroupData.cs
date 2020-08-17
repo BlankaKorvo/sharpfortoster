@@ -8,7 +8,7 @@ namespace CoreTestFrameWork
     {
         private string name;
         private string header;
-        private string footer;
+        private  string footer;
 
         public GroupData(string name, string header, string footer)
         {
@@ -16,39 +16,11 @@ namespace CoreTestFrameWork
             this.header = header;
             this.footer = footer;
         }
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
-        }
-        public string Header
-        {
-            get
-            {
-                return header;
-            }
-            set
-            {
-                header = value;
-            }
+        public string Name => name;
 
-        }
-        public string Footer
-        {
-            get
-            {
-                return footer;
-            }
-            set
-            {
-                footer = value;
-            }
-        }
+        public string Header => header;
+
+        public string Footer => footer;
+
     }
 }

@@ -18,15 +18,14 @@ namespace TestingGroups
         [Test]
         public void EditGroupTests()
         {
-            app.Navigator.OpenHomePage();
-            app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            app.Navigator.OpenGroupsPage();
-            app.Groups.SelectGroup(1);
-            app.Groups.InitGroupEdition();
-            app.Groups.FillGroupForm(new GroupData("edited name 1", "edited group 1", "edited footer 1"));
-            app.Groups.SubmitGroupEdition();
-            app.Navigator.OpenHomePage();
-            app.Auth.LogOut();
+            appManager.Navigator.OpenGroupsPage();
+            appManager.Groups.SelectGroup(1);
+            appManager.Groups
+                .InitGroupEdition()
+                .FillGroupForm(new GroupData("edited name 1", "edited group 1", "edited footer 1"))
+                .SubmitGroupEdition();
+            appManager.Navigator.OpenHomePage();
+            appManager.Auth.LogOut();
         }
 
     }

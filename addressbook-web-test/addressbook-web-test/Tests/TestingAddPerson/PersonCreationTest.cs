@@ -19,12 +19,11 @@ namespace TestingAddPerson
         [Test]
         public void CreatePersonTests()
         {
-            app.Navigator.OpenHomePage();
-            app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
-            app.Contacts.FillContactForm(new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" });
-            app.Contacts.SubmitContactCreation();
-            app.Navigator.OpenHomePage();
-            app.Auth.LogOut();
+            appManager.Contacts
+                    .FillContactForm(new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" })
+                    .SubmitContactCreation();
+            appManager.Navigator.OpenHomePage();
+            appManager.Auth.LogOut();
         }       
     }
 

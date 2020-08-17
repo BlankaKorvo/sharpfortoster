@@ -12,18 +12,20 @@ namespace TestingFrameworkLibrary
 {
     public class TestBase
     {
-        protected ApplicationManager app;
+        protected ApplicationManager appManager;
 
         [SetUp]
         public void SetupTest()
         {
-            app = new ApplicationManager();
+            appManager = new ApplicationManager();
+            appManager.Navigator.OpenHomePage();
+            appManager.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });
         }
 
         [TearDown]
         public void TeardownTest()
         {
-            app.StopTest();
+            appManager.StopTest();
         }
     }
 }
