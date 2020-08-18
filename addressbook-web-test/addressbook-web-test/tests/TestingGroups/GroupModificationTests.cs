@@ -13,16 +13,14 @@ using TestingFrameworkLibrary;
 namespace TestingGroups
 {
     [TestFixture]
-    public class GroupRemovalTest : TestBase
+    class GroupModificationTests : TestBase
     {
         [Test]
-        public void RemoveGroupTests()
+        public void EditGroupTests()
         {
-            appManager.Navigator.OpenGroupsPage();
-            appManager.Groups
-                .SelectGroup(1)
-                .DeleteGroup();
-            appManager.Auth.LogOut();
+            GroupData group = new GroupData("edited name 1", "edited group 1", "edited footer 1");
+            appManager.Groups.EditGroup(group, 1);
         }
+
     }
 }

@@ -18,10 +18,29 @@ namespace TestingFrameworkLibrary
 
         public GroupHelper CreateGroup(GroupData group)
         {
+            manager.Navigator.OpenGroupsPage();
             InitNewGroupCreation();
             FillGroupForm(group);
             SubmitGroupCreation();
             ReturnToGroupsPage(); 
+            return this;
+        }
+
+        public GroupHelper EditGroup (GroupData group, int index)
+        {
+            manager.Navigator.OpenGroupsPage();
+            SelectGroup(index);
+            InitGroupEdition();
+            FillGroupForm(group);
+            SubmitGroupEdition();
+            return this;
+        }
+
+        public GroupHelper Remove(int index)
+        {
+            manager.Navigator.OpenGroupsPage();
+            SelectGroup(index);
+            DeleteGroup();            
             return this;
         }
 

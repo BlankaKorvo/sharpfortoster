@@ -23,14 +23,45 @@ namespace TestingFrameworkLibrary
             return this;
         }
 
-        public ContactHelper DeleteContactFromAddressBook()
+        internal ContactHelper EditContact(ContactData contactData, int index)
         {
-            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
+            manager.Navigator.OpenHomePage();
+            SelectContactForEdition(index);
+            FillContactForm(contactData);
+            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
             return this;
         }
 
+        internal ContactHelper RemoveContact(int index)
+        {
+            manager.Navigator.OpenHomePage();
+            SelectContactFromAddressBook(index); //счет начинается с "2"
+            DeleteContactFromAddressBook();
+            return this;
+        }
 
+        public ContactHelper CreateContact(ContactData contactData)
+        {
+            manager.Navigator.OpenHomePage();
+            OpenEditAddressBookEntry();
+            FillContactForm(contactData);
+            SubmitContactCreation();
+            return this;
+        }
+
+        public ContactHelper SelectContactForEdition(int index)
+        {
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])["+index+"]")).Click();
+            return this;
+        }
+
+        public ContactHelper DeleteContactFromAddressBook()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+            //Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
+            return this;
+        }
 
         public ContactHelper SubmitContactCreation()
         {
@@ -40,7 +71,6 @@ namespace TestingFrameworkLibrary
 
         public ContactHelper FillContactForm(ContactData personData)
         {
-            OpenEditAddressBookEntry();
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(personData.FirstName);
@@ -99,18 +129,18 @@ namespace TestingFrameworkLibrary
             driver.FindElement(By.Name("aday")).Click();
             new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(personData.AnniversaryDay);
             driver.FindElement(By.Name("aday")).Click();
-            driver.FindElement(By.Name("theform")).Click();
+            //driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("amonth")).Click();
             new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(personData.AnniversaryMonth);
             driver.FindElement(By.Name("amonth")).Click();
             driver.FindElement(By.Name("ayear")).Click();
             driver.FindElement(By.Name("ayear")).Clear();
             driver.FindElement(By.Name("ayear")).SendKeys(personData.AnniversaryYear);
-            driver.FindElement(By.Name("new_group")).Click();
-            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText("ркка"); /// Доделать..хз пока как получать список групп для выбора
-            driver.FindElement(By.Name("new_group")).Click();
+            //driver.FindElement(By.Name("new_group")).Click();
+            //new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText("ркка"); /// Доделать..хз пока как получать список групп для выбора
+            //driver.FindElement(By.Name("new_group")).Click();
             driver.FindElement(By.Name("address2")).Click();
-            driver.FindElement(By.Name("theform")).Click();
+            //driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("address2")).Clear();
             driver.FindElement(By.Name("address2")).SendKeys(personData.SecondaryAddress);
             driver.FindElement(By.Name("phone2")).Click();

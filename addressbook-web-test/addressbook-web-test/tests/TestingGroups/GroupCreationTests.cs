@@ -13,24 +13,19 @@ using TestingFrameworkLibrary;
 namespace TestingGroups
 {
     [TestFixture]
-    public class GroupCreationTest : TestBase
+    public class GroupCreationTests : TestBase
     {
         [Test]
         public void CreateGroupTests()
         {
-            GroupData group = new GroupData("name 1", "group 1", "footer 1");
-            appManager.Navigator.OpenGroupsPage();
+            GroupData group = new GroupData("name 1", "group 1", "footer 1");            
             appManager.Groups.CreateGroup(group);
-            appManager.Navigator.OpenHomePage();
-            appManager.Auth.LogOut();
         }
+        [Test]
         public void CreateEmptyGroupTests()
         {
             GroupData group = new GroupData("", "", "");
-            appManager.Navigator.OpenGroupsPage();
             appManager.Groups.CreateGroup(group);
-            appManager.Navigator.OpenHomePage();
-            appManager.Auth.LogOut();
         }
     }
 }

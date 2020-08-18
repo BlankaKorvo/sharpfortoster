@@ -17,9 +17,7 @@ namespace CoreTestFrameWork
             this.footer = footer;
         }
         public string Name => name;
-
         public string Header => header;
-
         public string Footer => footer;
 
     }

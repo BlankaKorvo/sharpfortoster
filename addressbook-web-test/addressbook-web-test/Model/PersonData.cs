@@ -24,10 +24,10 @@ namespace CoreTestFrameWork
         public string Email2 { get; set; } = "";
         public string Email3 { get; set; } = "";
         public string HomePage { get; set; } = "";
-        public string BirthDay { get; set; } = "";
+        public string BirthDay { get; set; } = "-";
         public string BirthMonth { get; set; } = "-";
         public string BirthYear { get; set; } = "";
-        public string AnniversaryDay { get; set; } = "";
+        public string AnniversaryDay { get; set; } = "-";
         public string AnniversaryMonth { get; set; } = "-";
         public string AnniversaryYear { get; set; } = "";
         public string SecondaryAddress { get; set; } = "";

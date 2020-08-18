@@ -13,16 +13,13 @@ using TestingFrameworkLibrary;
 namespace TestingAddPerson
 {
     [TestFixture]
-    public class PersonRemovalTest : TestBase
+    public class PersonRemovalTests : TestBase
 
     {
         [Test]
         public void RemovePersonTests()
         {
-            appManager.Contacts
-                .SelectContactFromAddressBook(2) //счет начинается с "2"
-                .DeleteContactFromAddressBook();
-            appManager.Auth.LogOut();
+            appManager.Contacts.RemoveContact(2);
         }
     }
 

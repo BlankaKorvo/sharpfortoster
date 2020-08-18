@@ -13,17 +13,14 @@ using TestingFrameworkLibrary;
 namespace TestingAddPerson
 {
     [TestFixture]
-    public class PersonCreationTest : TestBase 
+    public class PersonCreationTests : TestBase 
 
     {
         [Test]
         public void CreatePersonTests()
         {
-            appManager.Contacts
-                    .FillContactForm(new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" })
-                    .SubmitContactCreation();
-            appManager.Navigator.OpenHomePage();
-            appManager.Auth.LogOut();
+            ContactData contactData = new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" };
+            appManager.Contacts.CreateContact(contactData);
         }       
     }
 
