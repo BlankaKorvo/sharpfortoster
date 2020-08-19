@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using CoreTestFrameWork;
+using WebTests.appmanager;
+using WebTests.model;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace TestingFrameworkLibrary
+namespace WebTests.appmanager
 {
     public class ContactHelper : HelperBase
     {
@@ -19,7 +20,7 @@ namespace TestingFrameworkLibrary
         }
         public ContactHelper SelectContactFromAddressBook(int index) //счет начинается с "2"
         {
-            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td/input")).Click();
+            driver.FindElement(By.XPath("//tr["+ index +"]/td/input")).Click();
             return this;
         }
 
@@ -58,8 +59,8 @@ namespace TestingFrameworkLibrary
         public ContactHelper DeleteContactFromAddressBook()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            driver.SwitchTo().Alert().Accept();
-            //Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
+            //driver.SwitchTo().Alert().Accept();
+            Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
             return this;
         }
 

@@ -7,20 +7,20 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using CoreTestFrameWork;
-using TestingFrameworkLibrary;
+using WebTests.appmanager;
+using WebTests.model;
 
-namespace TestingAddPerson
+namespace WebTests.addressBook.Contacts
 {
     [TestFixture]
-    public class PersonModificationTests : TestBase
+    public class ContactModification : AuthTestBase
 
     {
         [Test]
-        public void EditPersonTests()
+        public void EditContact()
         {  
             ContactData contactData = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
-            appManager.Contacts.EditContact(contactData, 1);
+            app.Contacts.EditContact(contactData, 1);
         }
     }
 

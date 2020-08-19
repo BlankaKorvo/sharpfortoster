@@ -4,21 +4,22 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using CoreTestFrameWork;
-using TestingFrameworkLibrary;
+using WebTests.appmanager;
 
-namespace TestingGroups
+namespace WebTests.addressBook.Contacts
 {
     [TestFixture]
-    public class GroupRemovalTests : TestBase
+    public class ContactRemoval : AuthTestBase
+
     {
         [Test]
-        public void RemoveGroupTests()
+        public void RemoveContact()
         {
-            appManager.Groups.Remove(1);
+            app.Contacts.RemoveContact(2);
         }
     }
+
 }

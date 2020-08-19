@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CoreTestFrameWork;
+using WebTests.appmanager;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace TestingFrameworkLibrary
+namespace WebTests.appmanager
 {
     public class NavigationHelper : HelperBase
     {

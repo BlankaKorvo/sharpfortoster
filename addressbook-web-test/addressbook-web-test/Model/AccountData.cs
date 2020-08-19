@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreTestFrameWork
+namespace WebTests.model
 {
     public class AccountData
     {

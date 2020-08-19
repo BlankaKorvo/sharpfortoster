@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using CoreTestFrameWork;
+using WebTests.appmanager;
+using WebTests.model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace TestingFrameworkLibrary
+namespace WebTests.appmanager
 {
     public class GroupHelper : HelperBase
     {
@@ -60,17 +62,12 @@ namespace TestingFrameworkLibrary
             return this;
         }
 
-        public GroupHelper FillGroupForm(GroupData groupdata)
+        public GroupHelper FillGroupForm(GroupData groupData)
         {
-            driver.FindElement(By.Name("group_name")).Click();
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(groupdata.Name);
-            driver.FindElement(By.Name("group_header")).Click();
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(groupdata.Header);
-            driver.FindElement(By.Name("group_footer")).Click();
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(groupdata.Footer);
+
+            Type(By.Name("group_name"), groupData.Name);
+            Type(By.Name("group_header"), groupData.Header);
+            Type(By.Name("group_footer"), groupData.Footer);
             return this;
         }
 

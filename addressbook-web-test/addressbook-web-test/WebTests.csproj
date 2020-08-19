@@ -66,23 +66,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addressBook\AuthTestBase.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="model\PersonData.cs" />
-    <Compile Include="tests\TestingAddPerson\PersonModification.cs" />
-    <Compile Include="tests\TestingAddPerson\PersonRemovalTests.cs" />
+    <Compile Include="addressBook\Contacts\PersonModification.cs" />
+    <Compile Include="addressBook\Contacts\ContactRemoval.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="appmanager\ContactHelper.cs" />
     <Compile Include="appmanager\GroupHelper.cs" />
     <Compile Include="appmanager\HelperBase.cs" />
     <Compile Include="appmanager\LoginHelper.cs" />
     <Compile Include="appmanager\NavigationHelper.cs" />
-    <Compile Include="appmanager\TestBase.cs" />
-    <Compile Include="tests\TestingAddPerson\PersonCreationTests.cs" />
+    <Compile Include="addressBook\TestBase.cs" />
+    <Compile Include="addressBook\Contacts\ContactCreation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tests\TestingGroups\GroupCreationTests.cs" />
-    <Compile Include="tests\TestingGroups\GroupModificationTests.cs" />
-    <Compile Include="tests\TestingGroups\GroupRemovalTests.cs" />
+    <Compile Include="addressBook\Groups\GroupCreation.cs" />
+    <Compile Include="addressBook\Groups\GroupModification.cs" />
+    <Compile Include="addressBook\Groups\GroupRemoval.cs" />
+    <Compile Include="addressBook\TestSuiteFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
