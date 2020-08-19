@@ -45,7 +45,11 @@ namespace WebTests.appmanager
 
         public void Logout()
         {
-            driver.FindElement(By.LinkText("Logout")).Click();
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.LinkText("Logout")).Click();
+            }
+            
         }
     }
 }

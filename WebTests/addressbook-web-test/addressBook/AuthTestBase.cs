@@ -11,7 +11,6 @@ namespace WebTests.addressBook
 {
     public class AuthTestBase : TestBase
     {
-        //protected ApplicationManager app;
         [SetUp]
         public void SetupLogin()
         {

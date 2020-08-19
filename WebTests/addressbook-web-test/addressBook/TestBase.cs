@@ -16,7 +16,7 @@ namespace WebTests.addressBook
     {
         protected ApplicationManager app;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void SetupApplicationManager()
         {
             app = ApplicationManager.GetInstance();
