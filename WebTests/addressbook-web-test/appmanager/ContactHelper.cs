@@ -28,7 +28,7 @@ namespace WebTests.appmanager
         }
         internal ContactHelper EditContact(ContactData contactData, int index)
         {
-            manager.Navigator.OpenHomePage();
+            manager.Navigator.ReturnToHomePage();
             manager.ContactAtomic.SelectContactForEdition(index);
             manager.ContactAtomic.FillContactForm(contactData);
             driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
@@ -36,7 +36,7 @@ namespace WebTests.appmanager
         }
         internal ContactHelper RemoveContact(int index)
         {
-            manager.Navigator.OpenHomePage();
+            manager.Navigator.ReturnToHomePage();
             manager.ContactAtomic.SelectContact(index); //счет начинается с "2"
             manager.ContactAtomic.DeleteContactFromAddressBook();
             return this;

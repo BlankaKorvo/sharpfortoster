@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 using WebTests.appmanager;
 using WebTests.model;
 
-namespace WebTests.addressBook.LoginLogout
+namespace WebTests.addressBook.Authorization
 {
     [TestFixture]
     public class Login : AuthTestBase

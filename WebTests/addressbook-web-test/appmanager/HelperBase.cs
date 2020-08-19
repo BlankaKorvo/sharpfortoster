@@ -44,7 +44,7 @@ namespace WebTests.appmanager
                 acceptNextAlert = true;
             }
         }
-        public void Type(By locator, string text)
+        public void FillinigTextField(By locator, string text)
         {
             if (text != null)
             {
@@ -53,6 +53,23 @@ namespace WebTests.appmanager
                 driver.FindElement(locator).SendKeys(text);
             }
         }
+        public void FillinigFileField(By locator, string text)
+        {
+            if (text != null)
+            {
+                driver.FindElement(locator).SendKeys(text);
+            }
+        }
+        public void FillingDropDownList(By locator, string text)
+        {
+            if (text != null)
+            {
+                driver.FindElement(locator).Click();
+                new SelectElement(driver.FindElement(locator)).SelectByText(text);
+                driver.FindElement(locator).Click();
+            }
+        }
+
         public bool IsElementPresent(By by)
         {
             try

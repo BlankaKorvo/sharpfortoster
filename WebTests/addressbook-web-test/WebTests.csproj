@@ -79,7 +79,7 @@
     <Compile Include="appmanager\atomicHelpers\LoginHelperAtomic.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="model\GroupData.cs" />
-    <Compile Include="model\PersonData.cs" />
+    <Compile Include="model\ContactData.cs" />
     <Compile Include="addressBook\Contacts\PersonModification.cs" />
     <Compile Include="addressBook\Contacts\ContactRemoval.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
@@ -94,7 +94,6 @@
     <Compile Include="addressBook\Groups\GroupCreation.cs" />
     <Compile Include="addressBook\Groups\GroupModification.cs" />
     <Compile Include="addressBook\Groups\GroupRemoval.cs" />
-    <Compile Include="addressBook\TestSuiteFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

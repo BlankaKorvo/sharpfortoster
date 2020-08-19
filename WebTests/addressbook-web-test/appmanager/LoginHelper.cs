@@ -26,8 +26,8 @@ namespace WebTests.appmanager
                 }
                 Logout();
             }
-            Type(By.Name("user"), account.Username);
-            Type(By.Name("pass"), account.Password);
+            FillinigTextField(By.Name("user"), account.Username);
+            FillinigTextField(By.Name("pass"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
         public void Logout()

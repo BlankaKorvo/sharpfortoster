@@ -36,9 +36,9 @@ namespace WebTests.appmanager.atomicHelpers
         public GroupHelperAtomic FillGroupForm(GroupData groupData)
         {
 
-            Type(By.Name("group_name"), groupData.Name);
-            Type(By.Name("group_header"), groupData.Header);
-            Type(By.Name("group_footer"), groupData.Footer);
+            FillinigTextField(By.Name("group_name"), groupData.Name); 
+            FillinigTextField(By.Name("group_header"), groupData.Header);
+            FillinigTextField(By.Name("group_footer"), groupData.Footer);
             return this;
         }
 
