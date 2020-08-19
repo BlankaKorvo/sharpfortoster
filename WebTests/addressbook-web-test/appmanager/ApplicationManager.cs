@@ -4,9 +4,11 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WebTests.appmanager.atomicHelpers;
 
 namespace WebTests.appmanager    
 {
@@ -20,6 +22,9 @@ namespace WebTests.appmanager
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
+        protected GroupHelperAtomic groupHelperAtomic;
+        protected ContactHelperAtomic contactHelperAtomic;
+        protected LoginHelperAtomic loginHelperAtomic;
         private ApplicationManager()
         {
             driver = new ChromeDriver();
@@ -28,6 +33,9 @@ namespace WebTests.appmanager
             navigationHelper = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
+            groupHelperAtomic = new GroupHelperAtomic(this);
+            contactHelperAtomic = new ContactHelperAtomic(this);
+            loginHelperAtomic = new LoginHelperAtomic(this);
         }
 
         ~ApplicationManager()
@@ -46,6 +54,9 @@ namespace WebTests.appmanager
         public NavigationHelper Navigator => navigationHelper;
         public GroupHelper Groups => groupHelper;
         public ContactHelper Contacts => contactHelper;
+        public GroupHelperAtomic GroupsAtomic => groupHelperAtomic;
+        public ContactHelperAtomic ContactAtomic => contactHelperAtomic;
+        public LoginHelperAtomic AuthAtomic => loginHelperAtomic;
         public IWebDriver Driver => driver;
 
         public static ApplicationManager GetInstance()

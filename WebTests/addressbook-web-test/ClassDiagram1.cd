@@ -6,14 +6,13 @@
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAAAAEAABAAAAAAAAAAAAASABAAAgAAAADCAABEAACA=</HashCode>
+      <HashCode>BCAIAEAABAAAAAAIAAAAAASABAAAiAAAADCAIBEAACA=</HashCode>
       <FileName>appmanager\ApplicationManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="navigationHelper" />
       <Field Name="loginHelper" />
       <Field Name="contactHelper" />
-      <Field Name="groupHelper" />
     </ShowAsAssociation>
   </Class>
   <Class Name="WebTests.appmanager.NavigationHelper" Collapsed="true">
@@ -33,22 +32,8 @@
   <Class Name="WebTests.appmanager.LoginHelper" Collapsed="true">
     <Position X="7.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAACAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>appmanager\LoginHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebTests.appmanager.ContactHelper" Collapsed="true">
-    <Position X="2.5" Y="10.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AABIAAAACAAMAAAIAAAAAAAAAAAAAAABAAAAAQAAAAA=</HashCode>
-      <FileName>appmanager\ContactHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebTests.appmanager.GroupHelper" Collapsed="true">
-    <Position X="5.5" Y="10.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAABAAAAAABEABAAAAAABMAAAAAAAAAAAIBQ=</HashCode>
-      <FileName>appmanager\GroupHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebTests.addressBook.Groups.GroupCreation" Collapsed="true">
@@ -115,6 +100,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>addressBook\AuthTestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebTests.appmanager.atomicHelpers.GroupHelperAtomic" Collapsed="true">
+    <Position X="0.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAABEAAAAAAAABMAAAAAAAAAAAIBA=</HashCode>
+      <FileName>appmanager\atomicHelpers\GroupHelperAtomic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebTests.appmanager.ContactHelper" Collapsed="true">
+    <Position X="2.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>appmanager\ContactHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

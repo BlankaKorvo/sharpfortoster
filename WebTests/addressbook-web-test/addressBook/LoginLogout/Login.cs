@@ -25,7 +25,7 @@ namespace WebTests.addressBook.LoginLogout
             AccountData account = new AccountData() { Username = "admin", Password = "secret" };
             app.Auth.LogIn(account);
             //verification
-            Assert.IsTrue(app.Auth.IsLoggedIn(account));
+            Assert.IsTrue(app.AuthAtomic.IsLoggedIn(account));
         }
         [Test]
         public void LoginWithInvalidCredential()
@@ -37,7 +37,7 @@ namespace WebTests.addressBook.LoginLogout
             AccountData account = new AccountData() { Username = "admin", Password = "12345" };
             app.Auth.LogIn(account);
             //verification
-            Assert.IsFalse(app.Auth.IsLoggedIn(account));
+            Assert.IsFalse(app.AuthAtomic.IsLoggedIn(account));
         }
 
     }

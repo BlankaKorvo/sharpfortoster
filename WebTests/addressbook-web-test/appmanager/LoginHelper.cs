@@ -18,9 +18,9 @@ namespace WebTests.appmanager
         }
         public void LogIn(AccountData account)
         {
-            if (IsLoggedIn())
+            if (manager.AuthAtomic.IsLoggedIn())
             {
-                if (IsLoggedIn(account))
+                if (manager.AuthAtomic.IsLoggedIn(account))
                 {
                     return;
                 }
@@ -30,22 +30,9 @@ namespace WebTests.appmanager
             Type(By.Name("pass"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
-
-        public bool IsLoggedIn(AccountData account)
-        {
-            return IsLoggedIn()
-                && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text 
-                    == "(" + account.Username + ")";
-        }
-
-        public bool IsLoggedIn()
-        {
-            return IsElementPresent(By.Name("logout"));
-        }
-
         public void Logout()
         {
-            if (IsLoggedIn())
+            if (manager.AuthAtomic.IsLoggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
             }

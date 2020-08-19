@@ -74,6 +74,9 @@
   <ItemGroup>
     <Compile Include="addressBook\AuthTestBase.cs" />
     <Compile Include="addressBook\LoginLogout\Login.cs" />
+    <Compile Include="appmanager\atomicHelpers\ContactHelperAtomic.cs" />
+    <Compile Include="appmanager\atomicHelpers\GroupHelperAtomic.cs" />
+    <Compile Include="appmanager\atomicHelpers\LoginHelperAtomic.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="model\PersonData.cs" />
