@@ -23,7 +23,10 @@ namespace WebTests.addressBook.Contacts
         [Test]
         public void RemoveContactSmart()
         {
+            //action
             app.Contacts.RemoveContactSmart(2);
+            //verification
+            Assert.IsFalse(app.ContactAtomic.IsContactPresent());
         }
     }
 

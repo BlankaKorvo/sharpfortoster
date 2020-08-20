@@ -25,6 +25,7 @@ namespace WebTests.addressBook.Groups
         public void RemoveGroupSmart()
         {
             app.Groups.RemoveGroupSmart(1);
+            Assert.IsFalse(app.GroupsAtomic.IsGroupPresent());
         }
     }
 }
