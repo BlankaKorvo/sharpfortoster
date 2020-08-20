@@ -20,6 +20,11 @@ namespace WebTests.addressBook.Contacts
         {
             app.Contacts.RemoveContact(2);
         }
+        [Test]
+        public void RemoveContactSmart()
+        {
+            app.Contacts.RemoveContactSmart(2);
+        }
     }
 
 }

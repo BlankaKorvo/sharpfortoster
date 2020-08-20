@@ -22,7 +22,7 @@ namespace WebTests.appmanager.atomicHelpers
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
             return this;
         }
-        public GroupHelperAtomic DeleteGroup()
+        public GroupHelperAtomic RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
             return this;
@@ -35,7 +35,6 @@ namespace WebTests.appmanager.atomicHelpers
 
         public GroupHelperAtomic FillGroupForm(GroupData groupData)
         {
-
             FillinigTextField(By.Name("group_name"), groupData.Name); 
             FillinigTextField(By.Name("group_header"), groupData.Header);
             FillinigTextField(By.Name("group_footer"), groupData.Footer);
@@ -61,6 +60,11 @@ namespace WebTests.appmanager.atomicHelpers
         {
             driver.FindElement(By.LinkText("group page")).Click();
             return this;
+        }
+        public bool IsGroupPresent()
+        {
+            manager.Navigator.OpenGroupsPage();
+            return IsElementPresent(By.ClassName("group"));
         }
 
     }

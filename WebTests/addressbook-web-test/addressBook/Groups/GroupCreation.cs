@@ -10,13 +10,13 @@ namespace WebTests.addressBook.Groups
         [Test]
         public void CreateGroup()
         {
-            GroupData group = new GroupData("name 1", "group 1", "footer 1");
+            GroupData group = new GroupData() { Name = "Group1", Footer = "Footer1", Header = "Header"};
             app.Groups.CreateGroup(group);
         }
         [Test]
         public void CreatePartialGroup()
         {
-            GroupData group = new GroupData("name 2", null, null);
+            GroupData group = new GroupData() { Name = "Group1" };
             app.Groups.CreateGroup(group);
 
 

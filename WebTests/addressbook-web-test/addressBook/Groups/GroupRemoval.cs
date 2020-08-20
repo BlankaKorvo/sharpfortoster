@@ -20,5 +20,11 @@ namespace WebTests.addressBook.Groups
             app.Groups.Remove(1);
             app.Groups.Remove(1);
         }
+
+        [Test]
+        public void RemoveGroupSmart()
+        {
+            app.Groups.RemoveGroupSmart(1);
+        }
     }
 }

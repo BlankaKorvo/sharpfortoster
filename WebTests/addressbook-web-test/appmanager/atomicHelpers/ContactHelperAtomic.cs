@@ -83,6 +83,11 @@ namespace WebTests.appmanager.atomicHelpers
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$")); //работает стабильно
             return this;
         }
+        public bool IsContactPresent()
+        {
+            manager.Navigator.ReturnToHomePage();
+            return IsElementPresent(By.ClassName("center"));
+        }
 
     }
 }

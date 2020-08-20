@@ -18,9 +18,17 @@ namespace WebTests.addressBook.Groups
         [Test]
         public void EditGroup()
         {
-            GroupData group = new GroupData("edited name 1", null, "edited footer 1");
+            GroupData group = new GroupData() {Name = "edited name 1",  Header = "edited header 1", Footer = "edited footer 1" };
             app.Groups.EditGroup(group, 1);
         }
+
+        [Test]
+        public void EditGroupSmart()
+        {
+            GroupData group = new GroupData() { Name = "edited name 1", Header = "edited footer 1" };
+            app.Groups.EditGroupSmart(group, 1);
+        }
+
 
     }
 }

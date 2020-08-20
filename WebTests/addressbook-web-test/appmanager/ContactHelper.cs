@@ -34,11 +34,42 @@ namespace WebTests.appmanager
             driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
             return this;
         }
+
+        public ContactHelper EditContactSmart(ContactData contact, int index) //пока не придумал как вытаскивать параметры объекта и чекать на ноль
+        {
+            if (manager.ContactAtomic.IsContactPresent())
+            {
+                EditContact(contact, index);
+            }
+            else
+            {
+                CreateContact(contact);
+                contact.FirstName += contact.FirstName;
+                contact.MiddleName += contact.MiddleName;
+                contact.LastName += contact.LastName;
+                EditContact(contact, index);
+            }
+            return this;
+        }
         internal ContactHelper RemoveContact(int index)
         {
             manager.Navigator.ReturnToHomePage();
             manager.ContactAtomic.SelectContact(index); //счет начинается с "2"
             manager.ContactAtomic.DeleteContactFromAddressBook();
+            return this;
+        }
+        public ContactHelper RemoveContactSmart(int index)
+        {
+            if (manager.ContactAtomic.IsContactPresent())
+            {
+                RemoveContact(index);
+            }
+            else
+            {
+                ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
+                CreateContact(contact);
+                RemoveContact(index);
+            }
             return this;
         }
     }

@@ -10,6 +10,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using WebTests.appmanager.atomicHelpers;
+using NUnit.Framework.Constraints;
 
 namespace WebTests.appmanager
 {
@@ -36,12 +37,45 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.SubmitGroupEdition();
             return this;
         }
+        public GroupHelper EditGroupSmart(GroupData group, int index)
+        {
+            if (manager.GroupsAtomic.IsGroupPresent())
+            {
+                EditGroup(group, index);
+            }
+            else
+            {
+                CreateGroup(group);
+                group.Name += group.Name;
+                group.Header += group.Header;
+                group.Footer += group.Footer;
+                EditGroup(group, index);
+            }
+            return this;
+        }
+
         public GroupHelper Remove(int index)
         {
             manager.Navigator.OpenGroupsPage();
             manager.GroupsAtomic.SelectGroup(index);
-            manager.GroupsAtomic.DeleteGroup();            
+            manager.GroupsAtomic.RemoveGroup();
             return this;
-        }      
+        }
+        public GroupHelper RemoveGroupSmart(int index)
+        {            
+            if (manager.GroupsAtomic.IsGroupPresent())
+            {
+                Remove(index);
+            }
+            else
+            {
+                GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
+                CreateGroup(group);
+                Remove(index);
+            }
+            return this;
+        }
+
     }
 }
+

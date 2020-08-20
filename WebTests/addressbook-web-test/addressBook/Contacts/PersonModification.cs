@@ -22,6 +22,13 @@ namespace WebTests.addressBook.Contacts
             ContactData contactData = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
             app.Contacts.EditContact(contactData, 1);
         }
+
+        [Test]
+        public void EditContactSmart()
+        {
+            ContactData contactData = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
+            app.Contacts.EditContactSmart(contactData, 1);
+        }
     }
 
 }
