@@ -34,6 +34,5 @@ namespace WebTests.model
         public string SecondaryAddress { get; set; }
         public string SecondaryHomePhone { get; set; }
         public string Note { get; set; }
-
     }
 }

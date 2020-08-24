@@ -8,6 +8,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using WebTests.appmanager;
+using WebTests.model;
 
 namespace WebTests.addressBook.Contacts
 {
@@ -18,16 +19,19 @@ namespace WebTests.addressBook.Contacts
         [Test]
         public void RemoveContact()
         {
-            app.Contacts.RemoveContact(2);
-        }
-        [Test]
-        public void RemoveContactSmart()
-        {
             //action
-            app.Contacts.RemoveContactSmart(2);
+            if (app.ContactAtomic.IsContactPresent())
+            {
+                app.Contacts.RemoveContact(1);
+            }
+            else
+            {
+                ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
+                app.Contacts.CreateContact(contact);
+                app.Contacts.RemoveContact(1);
+            }
             //verification
             Assert.IsFalse(app.ContactAtomic.IsContactPresent());
         }
     }
-
 }

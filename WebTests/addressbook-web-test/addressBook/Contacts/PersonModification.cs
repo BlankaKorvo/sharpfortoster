@@ -14,20 +14,23 @@ namespace WebTests.addressBook.Contacts
 {
     [TestFixture]
     public class ContactModification : AuthTestBase
-
     {
         [Test]
         public void EditContact()
-        {  
-            ContactData contactData = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
-            app.Contacts.EditContact(contactData, 1);
-        }
-
-        [Test]
-        public void EditContactSmart()
         {
             ContactData contactData = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
-            app.Contacts.EditContactSmart(contactData, 1);
+            if (app.ContactAtomic.IsContactPresent())
+            {
+                app.Contacts.EditContact(contactData, 1);
+            }
+            else
+            {
+                app.Contacts.CreateContact(contactData);
+                contactData.FirstName += contactData.FirstName;
+                contactData.MiddleName += contactData.MiddleName;
+                contactData.LastName += contactData.LastName;
+                app.Contacts.EditContact(contactData, 1);
+            }
         }
     }
 

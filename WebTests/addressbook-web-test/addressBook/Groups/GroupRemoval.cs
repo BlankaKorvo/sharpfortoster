@@ -8,6 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using WebTests.appmanager;
+using WebTests.model;
 
 namespace WebTests.addressBook.Groups
 {
@@ -17,15 +18,16 @@ namespace WebTests.addressBook.Groups
         [Test]
         public void RemoveGroup()
         {
-            app.Groups.Remove(1);
-            app.Groups.Remove(1);
-        }
-
-        [Test]
-        public void RemoveGroupSmart()
-        {
-            app.Groups.RemoveGroupSmart(1);
-            Assert.IsFalse(app.GroupsAtomic.IsGroupPresent());
+            if (app.GroupsAtomic.IsGroupPresent())
+            {
+                app.Groups.Remove(1);
+            }
+            else
+            {
+                GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
+                app.Groups.CreateGroup(group);
+                app.Groups.Remove(1);
+            }
         }
     }
 }

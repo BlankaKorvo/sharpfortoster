@@ -44,6 +44,5 @@ namespace WebTests.appmanager
             }
             driver.FindElement(By.LinkText("groups")).Click();
         }
-
     }
 }

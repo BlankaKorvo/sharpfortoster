@@ -35,8 +35,7 @@ namespace WebTests.appmanager
             if (manager.AuthAtomic.IsLoggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
-            }
-            
+            }            
         }
     }
 }

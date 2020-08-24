@@ -69,7 +69,6 @@ namespace WebTests.appmanager
                 driver.FindElement(locator).Click();
             }
         }
-
         public bool IsElementPresent(By by)
         {
             try
@@ -81,9 +80,6 @@ namespace WebTests.appmanager
             {
                 return false;
             }
-
-
         }
     }
-
 } 

@@ -58,11 +58,10 @@ namespace WebTests.appmanager.atomicHelpers
             return this;
         }
 
-
-
-        public ContactHelperAtomic SelectContact(int index) //счет начинается с "2"
+        public ContactHelperAtomic SelectContact(int index)
         {
-            driver.FindElement(By.XPath("//tr[" + index + "]/td/input")).Click();
+            //index += index;
+            driver.FindElement(By.XPath("//tr[" + ++index /*счет начинается с "2"*/ + "]/td/input")).Click();
             return this;
         }
 

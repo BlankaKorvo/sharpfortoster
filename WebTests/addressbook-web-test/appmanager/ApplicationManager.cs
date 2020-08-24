@@ -69,5 +69,5 @@ namespace WebTests.appmanager
             }
             return app.Value;
         }
-     }
+    }
 }
