@@ -42,5 +42,13 @@ namespace WebTests.appmanager
             manager.ContactAtomic.DeleteContactFromAddressBook();
             return this;
         }
+        public ContactHelper CreateContactIfExist(ContactData contactData)
+        {
+            if (!manager.ContactAtomic.IsContactPresent())
+            {
+                CreateContact(contactData);
+            }
+            return this;
+        }
     }
 }

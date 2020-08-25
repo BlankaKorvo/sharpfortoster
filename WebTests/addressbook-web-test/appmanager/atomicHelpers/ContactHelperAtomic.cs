@@ -87,6 +87,5 @@ namespace WebTests.appmanager.atomicHelpers
             manager.Navigator.ReturnToHomePage();
             return IsElementPresent(By.ClassName("center"));
         }
-
     }
 }

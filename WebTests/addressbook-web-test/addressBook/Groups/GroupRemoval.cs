@@ -18,16 +18,12 @@ namespace WebTests.addressBook.Groups
         [Test]
         public void RemoveGroup()
         {
-            if (app.GroupsAtomic.IsGroupPresent())
-            {
-                app.Groups.Remove(1);
-            }
-            else
-            {
-                GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
-                app.Groups.CreateGroup(group);
-                app.Groups.Remove(1);
-            }
+            //prepair
+            GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
+            app.Groups.CreateGroupIfExist(group);
+            //action
+            app.Groups.Remove(1);
+            //verification
         }
     }
 }

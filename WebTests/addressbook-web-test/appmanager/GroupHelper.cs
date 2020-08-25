@@ -45,6 +45,14 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.RemoveGroup();
             return this;
         }
+        public GroupHelper CreateGroupIfExist(GroupData group)
+        {
+            if (!manager.GroupsAtomic.IsGroupPresent())
+                {
+                CreateGroup(group);
+                }
+            return this;
+        }
     }
 }
 

@@ -11,19 +11,16 @@ using WebTests.appmanager;
 using WebTests.model;
 
 namespace WebTests.addressBook.Contacts
-
 {
     [TestFixture]
     public class ContactCreation : AuthTestBase 
-
     {
         [Test]
         public void CreateContact()
         {
-            WebTests.model.ContactData contactData = new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" };
+            ContactData contactData = new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" };
             app.Contacts.CreateContact(contactData);
         }       
     }
-
 }
 

@@ -66,6 +66,5 @@ namespace WebTests.appmanager.atomicHelpers
             manager.Navigator.OpenGroupsPage();
             return IsElementPresent(By.ClassName("group"));
         }
-
     }
 }

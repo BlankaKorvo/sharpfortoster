@@ -14,24 +14,15 @@ namespace WebTests.addressBook.Contacts
 {
     [TestFixture]
     public class ContactRemoval : AuthTestBase
-
     {
         [Test]
         public void RemoveContact()
         {
+            //prepair
+            ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
+            app.Contacts.CreateContactIfExist(contact);
             //action
-            if (app.ContactAtomic.IsContactPresent())
-            {
-                app.Contacts.RemoveContact(1);
-            }
-            else
-            {
-                ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
-                app.Contacts.CreateContact(contact);
-                app.Contacts.RemoveContact(1);
-            }
-            //verification
-            Assert.IsFalse(app.ContactAtomic.IsContactPresent());
+            app.Contacts.RemoveContact(1);
         }
     }
 }

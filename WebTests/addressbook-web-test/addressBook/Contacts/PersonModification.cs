@@ -18,19 +18,14 @@ namespace WebTests.addressBook.Contacts
         [Test]
         public void EditContact()
         {
-            ContactData contactData = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
-            if (app.ContactAtomic.IsContactPresent())
-            {
-                app.Contacts.EditContact(contactData, 1);
-            }
-            else
-            {
-                app.Contacts.CreateContact(contactData);
-                contactData.FirstName += contactData.FirstName;
-                contactData.MiddleName += contactData.MiddleName;
-                contactData.LastName += contactData.LastName;
-                app.Contacts.EditContact(contactData, 1);
-            }
+            //prepair
+            ContactData contact = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
+            app.Contacts.CreateContactIfExist(contact);
+            contact.FirstName += contact.FirstName;
+            contact.LastName += contact.LastName;
+            contact.MiddleName += contact.MiddleName;
+            //action
+            app.Contacts.EditContact(contact, 1);
         }
     }
 

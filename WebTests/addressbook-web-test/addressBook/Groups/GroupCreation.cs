@@ -13,11 +13,5 @@ namespace WebTests.addressBook.Groups
             GroupData group = new GroupData() { Name = "Group1", Footer = "Footer1", Header = "Header"};
             app.Groups.CreateGroup(group);
         }
-        //[Test]
-        //public void CreatePartialGroup()
-        //{
-        //    GroupData group = new GroupData() { Name = "Group1" };
-        //    app.Groups.CreateGroup(group);
-        //}
     }
 }
