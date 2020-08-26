@@ -11,7 +11,7 @@ namespace WebTests.addressBook
 {
     public class AuthTestBase : TestBase
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void SetupLogin()
         {
             app.Auth.LogIn(new AccountData() { Username = "admin", Password = "secret" });

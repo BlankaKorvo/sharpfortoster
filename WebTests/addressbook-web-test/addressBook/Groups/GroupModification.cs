@@ -20,19 +20,19 @@ namespace WebTests.addressBook.Groups
         public void EditGroup()
         {
             //prepair
-            GroupData oldGroup = new GroupData() { Name = "name 1", Header = "header 1", Footer = "footer 1" };
-            app.Groups.CreateGroupIfExist(oldGroup);            
+            GroupData groupData = new GroupData() { Name = "nameGroup", Header = "headerGroup", Footer = "footerGroup" };
+            app.Groups.CreateGroupIfExist(groupData);            
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-            GroupData newGroup = new GroupData() { Name = oldGroups[0].Name + " new Edit", Header = "new Edit", Footer = "edited name 1" };   
-            
+            groupData.Name += groupData.Name;
+
             //action
-            app.Groups.EditGroup(newGroup, 0);
+            app.Groups.EditGroup(groupData, 0);
 
             //verification
             List<GroupData> NewGroups = app.Groups.GetGroupList();            
-            oldGroups[0].Name = newGroup.Name;
+            oldGroups[0].Name = groupData.Name;
             oldGroups.Sort();
-            NewGroups.Sort();            
+            NewGroups.Sort();
             Assert.AreEqual(oldGroups, NewGroups);
         }
     }
