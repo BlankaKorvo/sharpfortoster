@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebTests.model
 {
-    public class ContactData
+    public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -34,5 +34,36 @@ namespace WebTests.model
         public string SecondaryAddress { get; set; }
         public string SecondaryHomePhone { get; set; }
         public string Note { get; set; }
+
+        public int CompareTo(ContactData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+            return FirstName.CompareTo(other.FirstName + other.LastName);
+        }
+
+        public bool Equals(ContactData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return FirstName == other.FirstName && LastName == other.LastName;
+        }
+
+        public override int GetHashCode()
+        {
+            return FirstName.GetHashCode() + LastName.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return "FirstName: " + FirstName + "LastName: " + LastName;
+        }
     }
 }

@@ -26,6 +26,25 @@ namespace WebTests.appmanager
             manager.ContactAtomic.SubmitContactCreation();
             return this;
         }
+
+        internal List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.OpenHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//table[@id='maintable']/tbody/tr[@name='entry']"));
+            foreach (IWebElement element in elements)
+            {
+                IReadOnlyList<IWebElement> tags = element.FindElements(By.TagName("td"));
+                contacts.Add(new ContactData() { FirstName = tags[2].Text, LastName = tags[1].Text });
+
+                //{
+                //    Id = el.FindElement(By.TagName("input")).GetAttribute("value")
+                //});
+                //contacts.Add(new ContactData() { FirstName = element.Text});
+            }
+            return contacts;
+        }
+
         internal ContactHelper EditContact(ContactData contactData, int index)
         {
             manager.Navigator.ReturnToHomePage();

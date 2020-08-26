@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -21,8 +22,15 @@ namespace WebTests.addressBook.Contacts
             //prepair
             ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
             app.Contacts.CreateContactIfExist(contact);
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
             //action
             app.Contacts.RemoveContact(0);
+
+            //verification
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts.RemoveAt(0);
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.ReturnToGroupsPage(); 
             return this;
         }
+
         public GroupHelper EditGroup (GroupData group, int index)
         {
             manager.Navigator.OpenGroupsPage();
@@ -61,7 +62,6 @@ namespace WebTests.appmanager
             ICollection<IWebElement>elements = driver.FindElements(By.CssSelector("span.group"));
             foreach (IWebElement element in elements)
             { 
-                GroupData group = new GroupData() {Name = element.Text};
                 groups.Add(new GroupData() { Name = element.Text});
             }
             return groups;
