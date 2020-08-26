@@ -9,6 +9,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using WebTests.appmanager;
 using WebTests.model;
+using System.Collections.Generic;
 
 namespace WebTests.addressBook.Groups
 {
@@ -21,9 +22,15 @@ namespace WebTests.addressBook.Groups
             //prepair
             GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
             app.Groups.CreateGroupIfExist(group);
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+
             //action
-            app.Groups.Remove(1);
+            app.Groups.Remove(0);
+
             //verification
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups.RemoveAt(0);
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }

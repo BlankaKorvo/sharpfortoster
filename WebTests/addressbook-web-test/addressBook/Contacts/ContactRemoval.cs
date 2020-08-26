@@ -22,7 +22,7 @@ namespace WebTests.addressBook.Contacts
             ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
             app.Contacts.CreateContactIfExist(contact);
             //action
-            app.Contacts.RemoveContact(1);
+            app.Contacts.RemoveContact(0);
         }
     }
 }

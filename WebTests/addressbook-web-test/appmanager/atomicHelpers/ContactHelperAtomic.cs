@@ -61,13 +61,13 @@ namespace WebTests.appmanager.atomicHelpers
         public ContactHelperAtomic SelectContact(int index)
         {
             //index += index;
-            driver.FindElement(By.XPath("//tr[" + ++index /*счет начинается с "2"*/ + "]/td/input")).Click();
+            driver.FindElement(By.XPath("//tr[" + (index+2) /*счет начинается с "2"*/ + "]/td/input")).Click();
             return this;
         }
 
         public ContactHelperAtomic SelectContactForEdition(int index)
         {
-            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (index+1) + "]")).Click();
             return this;
         }
         public ContactHelperAtomic OpenEditAddressBookEntry()

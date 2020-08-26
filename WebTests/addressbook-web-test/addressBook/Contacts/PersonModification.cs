@@ -25,7 +25,7 @@ namespace WebTests.addressBook.Contacts
             contact.LastName += contact.LastName;
             contact.MiddleName += contact.MiddleName;
             //action
-            app.Contacts.EditContact(contact, 1);
+            app.Contacts.EditContact(contact, 0);
         }
     }
 

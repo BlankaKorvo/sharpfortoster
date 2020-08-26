@@ -19,7 +19,7 @@ namespace WebTests.appmanager.atomicHelpers
         }
         public GroupHelperAtomic SelectGroup(int index)
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
             return this;
         }
         public GroupHelperAtomic RemoveGroup()
