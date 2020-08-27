@@ -25,11 +25,13 @@ namespace WebTests.appmanager.atomicHelpers
         public GroupHelperAtomic RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
+            //groupCache = null;
             return this;
         }
         public GroupHelperAtomic SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            //groupCache = null;
             return this;
         }
 
@@ -54,6 +56,7 @@ namespace WebTests.appmanager.atomicHelpers
         public GroupHelperAtomic SubmitGroupEdition()
         {
             driver.FindElement(By.Name("update")).Click();
+            //groupCache = null;
             return this;
         }
         public GroupHelperAtomic ReturnToGroupsPage()

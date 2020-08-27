@@ -25,7 +25,8 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.InitNewGroupCreation();
             manager.GroupsAtomic.FillGroupForm(group);
             manager.GroupsAtomic.SubmitGroupCreation();
-            manager.GroupsAtomic.ReturnToGroupsPage(); 
+            manager.GroupsAtomic.ReturnToGroupsPage();
+            groupCache = null;
             return this;
         }
 
@@ -36,6 +37,7 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.InitGroupEdition();
             manager.GroupsAtomic.FillGroupForm(group);
             manager.GroupsAtomic.SubmitGroupEdition();
+            groupCache = null;
             return this;
         }
 
@@ -44,6 +46,7 @@ namespace WebTests.appmanager
             manager.Navigator.OpenGroupsPage();
             manager.GroupsAtomic.SelectGroup(index);
             manager.GroupsAtomic.RemoveGroup();
+            groupCache = null;
             return this;
         }
         public GroupHelper CreateGroupIfExist(GroupData group)
@@ -53,18 +56,21 @@ namespace WebTests.appmanager
                 CreateGroup(group);
                 }
             return this;
-        }
+        }        
 
         public List<GroupData> GetGroupList()
         {
-            List<GroupData> groups = new List<GroupData>();
-            manager.Navigator.OpenGroupsPage();
-            ICollection<IWebElement>elements = driver.FindElements(By.CssSelector("span.group"));
-            foreach (IWebElement element in elements)
-            { 
-                groups.Add(new GroupData() { Name = element.Text});
-            }
-            return groups;
+            if (groupCache == null)
+            {
+                groupCache = new List<GroupData>();
+                manager.Navigator.OpenGroupsPage();
+                ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+                foreach (IWebElement element in elements)
+                {
+                    groupCache.Add(new GroupData() { Name = element.Text });
+                }
+            }          
+            return new List<GroupData>(groupCache);
         }
     }
 }

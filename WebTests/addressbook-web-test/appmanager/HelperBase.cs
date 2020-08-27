@@ -9,6 +9,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using WebTests.model;
 
 namespace WebTests.appmanager
 {
@@ -17,6 +18,7 @@ namespace WebTests.appmanager
         protected IWebDriver driver;
         protected ApplicationManager manager;
         private bool acceptNextAlert = true;
+        protected List<GroupData> groupCache;
 
         public HelperBase(ApplicationManager manager)
         {
