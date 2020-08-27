@@ -24,16 +24,27 @@ namespace WebTests.addressBook.Groups
             app.Groups.CreateGroupIfExist(groupData);            
             List<GroupData> oldGroups = app.Groups.GetGroupList();
             groupData.Name += groupData.Name;
+            GroupData groupDataBefore = oldGroups[0];
 
             //action
             app.Groups.EditGroup(groupData, 0);
 
             //verification
+            int count = app.Groups.GetGroupCount();
+            Assert.AreEqual(oldGroups.Count, count);
+
             List<GroupData> NewGroups = app.Groups.GetGroupList();            
             oldGroups[0].Name = groupData.Name;
             oldGroups.Sort();
             NewGroups.Sort();
             Assert.AreEqual(oldGroups, NewGroups);
+            foreach (GroupData item in NewGroups)
+            {
+                if (item.Id == groupDataBefore.Id)
+                {
+                    Assert.AreEqual(groupData.Name, item.Name);
+                }
+            }
         }
     }
 }

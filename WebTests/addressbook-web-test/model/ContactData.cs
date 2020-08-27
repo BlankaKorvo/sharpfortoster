@@ -34,6 +34,7 @@ namespace WebTests.model
         public string SecondaryAddress { get; set; }
         public string SecondaryHomePhone { get; set; }
         public string Note { get; set; }
+        public string Id { get; set; }
 
         public int CompareTo(ContactData other)
         {
@@ -41,7 +42,8 @@ namespace WebTests.model
             {
                 return 1;
             }
-            return FirstName.CompareTo(other.FirstName + other.LastName);
+            string x = FirstName + LastName;
+            return x.CompareTo(other.FirstName + other.LastName);
         }
 
         public bool Equals(ContactData other)

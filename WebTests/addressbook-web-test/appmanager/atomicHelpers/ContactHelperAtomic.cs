@@ -22,6 +22,13 @@ namespace WebTests.appmanager.atomicHelpers
         public ContactHelperAtomic SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            contactCache = null;
+            return this;
+        }
+        public ContactHelperAtomic SubmitEditContact()
+        {
+            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+            contactCache = null;
             return this;
         }
         public ContactHelperAtomic FillContactForm(ContactData personData)
@@ -75,11 +82,12 @@ namespace WebTests.appmanager.atomicHelpers
             driver.FindElement(By.LinkText("add new")).Click();
             return this;
         }
-        public ContactHelperAtomic DeleteContactFromAddressBook()
+        public ContactHelperAtomic RemovalContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             //driver.SwitchTo().Alert().Accept(); //работает через раз. Плавающая бага нераспознанной природы.
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$")); //работает стабильно
+            contactCache = null;
             return this;
         }
         public bool IsContactPresent()

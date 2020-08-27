@@ -27,38 +27,20 @@ namespace WebTests.appmanager
             return this;
         }
 
-        internal List<ContactData> GetContactList()
-        {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.OpenHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//table[@id='maintable']/tbody/tr[@name='entry']"));
-            foreach (IWebElement element in elements)
-            {
-                IReadOnlyList<IWebElement> tags = element.FindElements(By.TagName("td"));
-                contacts.Add(new ContactData() { FirstName = tags[2].Text, LastName = tags[1].Text });
-
-                //{
-                //    Id = el.FindElement(By.TagName("input")).GetAttribute("value")
-                //});
-                //contacts.Add(new ContactData() { FirstName = element.Text});
-            }
-            return contacts;
-        }
-
-        internal ContactHelper EditContact(ContactData contactData, int index)
+        public ContactHelper EditContact(ContactData contactData, int index)
         {
             manager.Navigator.ReturnToHomePage();
             manager.ContactAtomic.SelectContactForEdition(index);
             manager.ContactAtomic.FillContactForm(contactData);
-            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+            manager.ContactAtomic.SubmitEditContact();
             return this;
         }
 
-        internal ContactHelper RemoveContact(int index)
+        public ContactHelper RemoveContact(int index)
         {
             manager.Navigator.ReturnToHomePage();
             manager.ContactAtomic.SelectContact(index); //счет начинается с "2"
-            manager.ContactAtomic.DeleteContactFromAddressBook();
+            manager.ContactAtomic.RemovalContact();
             return this;
         }
         public ContactHelper CreateContactIfExist(ContactData contactData)
@@ -68,6 +50,24 @@ namespace WebTests.appmanager
                 CreateContact(contactData);
             }
             return this;
+        }
+        public List<ContactData> GetContactList()
+        {
+            if (contactCache == null)
+            {
+                contactCache = new List<ContactData>();
+                manager.Navigator.OpenHomePage();
+                ICollection<IWebElement> elements = driver.FindElements(By.XPath("//table[@id='maintable']/tbody/tr[@name='entry']"));
+                foreach (IWebElement element in elements)
+                {
+                    IReadOnlyList<IWebElement> tags = element.FindElements(By.TagName("td"));
+                    contactCache.Add(new ContactData() 
+                    { 
+                        FirstName = tags[2].Text, LastName = tags[1].Text 
+                    });
+                }
+            }
+            return new List<ContactData>(contactCache);
         }
     }
 }

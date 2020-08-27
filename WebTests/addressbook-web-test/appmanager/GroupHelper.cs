@@ -19,6 +19,7 @@ namespace WebTests.appmanager
         public GroupHelper (ApplicationManager manager) : base(manager)
         {
         }
+
         public GroupHelper CreateGroup(GroupData group)
         {
             manager.Navigator.OpenGroupsPage();
@@ -26,7 +27,7 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.FillGroupForm(group);
             manager.GroupsAtomic.SubmitGroupCreation();
             manager.GroupsAtomic.ReturnToGroupsPage();
-            groupCache = null;
+            //groupCache = null;
             return this;
         }
 
@@ -37,7 +38,7 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.InitGroupEdition();
             manager.GroupsAtomic.FillGroupForm(group);
             manager.GroupsAtomic.SubmitGroupEdition();
-            groupCache = null;
+            //groupCache = null;
             return this;
         }
 
@@ -46,9 +47,10 @@ namespace WebTests.appmanager
             manager.Navigator.OpenGroupsPage();
             manager.GroupsAtomic.SelectGroup(index);
             manager.GroupsAtomic.RemoveGroup();
-            groupCache = null;
+            //groupCache = null;
             return this;
         }
+
         public GroupHelper CreateGroupIfExist(GroupData group)
         {
             if (!manager.GroupsAtomic.IsGroupPresent())
@@ -56,7 +58,7 @@ namespace WebTests.appmanager
                 CreateGroup(group);
                 }
             return this;
-        }        
+        }
 
         public List<GroupData> GetGroupList()
         {
@@ -67,10 +69,19 @@ namespace WebTests.appmanager
                 ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
                 foreach (IWebElement element in elements)
                 {
-                    groupCache.Add(new GroupData() { Name = element.Text });
+                    groupCache.Add(new GroupData()
+                    {
+                        Name = element.Text,
+                        Id = element.FindElement(By.TagName("input")).GetAttribute("value")
+                    });
                 }
-            }          
+            }
             return new List<GroupData>(groupCache);
+        }
+        public int GetGroupCount()
+        {
+            manager.Navigator.OpenGroupsPage();
+            return driver.FindElements(By.CssSelector("span.group")).Count;
         }
     }
 }
