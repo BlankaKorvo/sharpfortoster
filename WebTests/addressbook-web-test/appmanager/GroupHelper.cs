@@ -51,6 +51,14 @@ namespace WebTests.appmanager
             return this;
         }
 
+        public GroupHelper RemoveAllGroups()
+        {
+            manager.Navigator.OpenGroupsPage();
+            manager.GroupsAtomic.SelectAllGroups();
+            manager.GroupsAtomic.RemoveGroup();
+            return this;
+        }
+
         public GroupHelper CreateGroupIfExist(GroupData group)
         {
             if (!manager.GroupsAtomic.IsGroupPresent())

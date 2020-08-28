@@ -42,8 +42,10 @@ namespace WebTests.model
             {
                 return 1;
             }
-            string x = FirstName + LastName;
-            return x.CompareTo(other.FirstName + other.LastName);
+            if (LastName.CompareTo(other.LastName) == 0)
+                return FirstName.CompareTo(other.FirstName);
+            else
+                return LastName.CompareTo(other.LastName);
         }
 
         public bool Equals(ContactData other)

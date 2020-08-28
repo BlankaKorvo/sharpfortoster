@@ -59,6 +59,13 @@ namespace WebTests.appmanager.atomicHelpers
             groupCache = null;
             return this;
         }
+
+        public GroupHelperAtomic SelectAllGroups()
+        {
+            int x = manager.Groups.GetGroupList().Count();
+            return this;
+        }
+
         public GroupHelperAtomic ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();

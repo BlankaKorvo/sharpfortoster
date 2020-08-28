@@ -39,5 +39,17 @@ namespace WebTests.addressBook.Groups
                 Assert.AreNotEqual(group.Id, toBeRemoved.Id);
             }
         }
+        [Test]
+        public void RemoveAllGroup()
+        {
+            //prepair
+            GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
+            app.Groups.CreateGroupIfExist(group);
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+
+            //action
+            app.Groups.RemoveAllGroups();
+
+        }
     }
 }
