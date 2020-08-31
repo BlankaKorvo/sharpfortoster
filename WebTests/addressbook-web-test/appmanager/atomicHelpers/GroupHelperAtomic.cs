@@ -63,6 +63,10 @@ namespace WebTests.appmanager.atomicHelpers
         public GroupHelperAtomic SelectAllGroups()
         {
             int x = manager.Groups.GetGroupList().Count();
+            for (int index = 0; index < x; index++)
+            {
+                SelectGroup(index);
+            }
             return this;
         }
 

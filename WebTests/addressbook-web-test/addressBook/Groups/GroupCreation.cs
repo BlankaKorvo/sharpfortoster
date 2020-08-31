@@ -9,7 +9,7 @@ namespace WebTests.addressBook.Groups
     public class GroupCreation : AuthTestBase
     {
         [Test]
-        public void CreateGroup()
+         public void CreateGroup()
         {
             //prepair
             GroupData group = new GroupData() { Name = "Group1", Footer = "Footer1", Header = "Header" };

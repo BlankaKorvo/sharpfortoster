@@ -18,8 +18,8 @@ namespace WebTests.appmanager
         protected IWebDriver driver;
         protected ApplicationManager manager;
         private bool acceptNextAlert = true;
-        protected static List<GroupData> groupCache;
-        protected static List<ContactData> contactCache;
+        protected static List<GroupData> groupCache = null;
+        protected static List<ContactData> contactCache = null;
 
         public HelperBase(ApplicationManager manager)
         {

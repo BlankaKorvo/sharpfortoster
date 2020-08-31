@@ -16,7 +16,7 @@ namespace WebTests.addressBook.Contacts
     [TestFixture]
     public class ContactRemoval : AuthTestBase
     {
-        [Test]
+        [Test, Order(0)]
         public void RemoveContact()
         {
             //prepair
@@ -32,5 +32,20 @@ namespace WebTests.addressBook.Contacts
             oldContacts.RemoveAt(0);
             Assert.AreEqual(oldContacts, newContacts);
         }
+
+        [Test]
+        public void RemoveAllContact()
+        {
+            //prepair
+            ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
+            app.Contacts.CreateContactIfExist(contact);
+
+            //action
+            app.Contacts.RemoveAllContact(0);
+
+            //verification
+            Assert.IsFalse(app.ContactAtomic.IsContactPresent());
+        }
+
     }
 }

@@ -95,5 +95,10 @@ namespace WebTests.appmanager.atomicHelpers
             manager.Navigator.ReturnToHomePage();
             return IsElementPresent(By.ClassName("center"));
         }
+        public ContactHelperAtomic SelectAllContact()
+        {
+            driver.FindElement(By.Id("MassCB")).Click();
+            return this;
+        }
     }
 }

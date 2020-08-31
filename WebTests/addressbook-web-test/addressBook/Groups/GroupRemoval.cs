@@ -16,7 +16,7 @@ namespace WebTests.addressBook.Groups
     [TestFixture]
     public class GroupRemoval : AuthTestBase
     {
-        [Test]
+        [Test, Order(0)]
         public void RemoveGroup()
         {
             //prepair
@@ -36,7 +36,7 @@ namespace WebTests.addressBook.Groups
             Assert.AreEqual(oldGroups, newGroups);
             foreach (GroupData item in newGroups)
             {
-                Assert.AreNotEqual(group.Id, toBeRemoved.Id);
+                Assert.AreNotEqual(item.Id, toBeRemoved.Id);
             }
         }
         [Test]
@@ -45,10 +45,12 @@ namespace WebTests.addressBook.Groups
             //prepair
             GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
             app.Groups.CreateGroupIfExist(group);
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
 
             //action
             app.Groups.RemoveAllGroups();
+
+            //Assert
+            Assert.IsFalse(app.GroupsAtomic.IsGroupPresent());
 
         }
     }

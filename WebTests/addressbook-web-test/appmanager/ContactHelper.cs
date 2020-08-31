@@ -43,6 +43,13 @@ namespace WebTests.appmanager
             manager.ContactAtomic.RemovalContact();
             return this;
         }
+        public ContactHelper RemoveAllContact(int index)
+        {
+            manager.Navigator.ReturnToHomePage();
+            manager.ContactAtomic.SelectAllContact(); //счет начинается с "2"
+            manager.ContactAtomic.RemovalContact();
+            return this;
+        }
         public ContactHelper CreateContactIfExist(ContactData contactData)
         {
             if (!manager.ContactAtomic.IsContactPresent())
