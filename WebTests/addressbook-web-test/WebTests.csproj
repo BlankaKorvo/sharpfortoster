@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="addressBook\AuthTestBase.cs" />
+    <Compile Include="addressBook\Contacts\ContactInformationTests.cs" />
     <Compile Include="addressBook\LoginLogout\Login.cs" />
     <Compile Include="appmanager\atomicHelpers\ContactHelperAtomic.cs" />
     <Compile Include="appmanager\atomicHelpers\GroupHelperAtomic.cs" />

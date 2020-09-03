@@ -22,7 +22,7 @@ namespace WebTests.addressBook.Contacts
             //prepair
             ContactData contactData = new ContactData() { FirstName = "Василий", MiddleName = "Иванович", LastName = "Чапаев" };
             List<ContactData> oldContacts = app.Contacts.GetContactList();
-
+            
             //action
             app.Contacts.CreateContact(contactData);
 

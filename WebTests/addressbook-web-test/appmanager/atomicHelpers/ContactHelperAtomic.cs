@@ -65,6 +65,14 @@ namespace WebTests.appmanager.atomicHelpers
             return this;
         }
 
+        public ContactHelperAtomic InitContactModification(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"))[7]
+                .FindElement(By.TagName("a")).Click();
+            return this;
+        }
+
         public ContactHelperAtomic SelectContact(int index)
         {
             //index += index;
@@ -85,8 +93,8 @@ namespace WebTests.appmanager.atomicHelpers
         public ContactHelperAtomic RemovalContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            //driver.SwitchTo().Alert().Accept(); //работает через раз. Плавающая бага нераспознанной природы.
-            Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$")); //работает стабильно
+            driver.SwitchTo().Alert().Accept(); //работает через раз. Плавающая бага нераспознанной природы.
+           ///Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$")); //работает стабильно
             contactCache = null;
             return this;
         }
@@ -99,6 +107,14 @@ namespace WebTests.appmanager.atomicHelpers
         {
             driver.FindElement(By.Id("MassCB")).Click();
             return this;
+        }
+        public string CleanUpEmail(string email)
+        {
+            if (email == null || email == "")
+            {
+                return "";
+            }
+            return email.Replace("r", "").Replace("n", "");            
         }
     }
 }

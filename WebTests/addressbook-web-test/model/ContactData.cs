@@ -9,6 +9,8 @@ namespace WebTests.model
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
+        private string allPhones;
+        private string allEmails;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -35,6 +37,62 @@ namespace WebTests.model
         public string SecondaryHomePhone { get; set; }
         public string Note { get; set; }
         public string Id { get; set; }
+        public string AllPhones
+        {
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+                else 
+                {
+                    return (CleanUpPhone(HomePhone) + CleanUpPhone(MobilePhone) + CleanUpPhone(WorkPhone) + CleanUpPhone(SecondaryHomePhone)).Trim();
+                }
+            }
+            set 
+            { 
+                allPhones = value; 
+            }
+        }
+
+        public string AllEmails
+        {
+            get
+            {
+                if (allEmails != null)
+                {
+                    return allEmails;
+                }
+                else
+                {
+                    return (CleanUpPhone(Email1) + CleanUpPhone(Email2) + CleanUpPhone(Email3)).Trim();
+
+                }
+            }
+            set
+            {
+                allEmails = value;
+            }
+        }
+
+        private string CleanUpPhone(string phone)
+        {
+            if (phone == null || phone =="")
+            {
+                return "";
+            }
+            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+        }
+        private string CleanUpEmail(string email)
+        {
+            if (email == null || email == "")
+            {
+                return "";
+            }
+            return email + "\\r\\n";
+           
+        }
 
         public int CompareTo(ContactData other)
         {
