@@ -65,6 +65,12 @@ namespace WebTests.appmanager.atomicHelpers
             return this;
         }
 
+        internal ContactHelperAtomic GoToContactDetails(int index)
+        {
+            driver.FindElement(By.XPath("(//img[@alt='Details'])[" + (index + 1) + "]")).Click();
+            return this;
+        }
+
         public ContactHelperAtomic InitContactModification(int index)
         {
             driver.FindElements(By.Name("entry"))[index]

@@ -10,6 +10,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System.Security.Cryptography;
+using System.Reflection;
 
 namespace WebTests.appmanager
 {
@@ -30,38 +32,138 @@ namespace WebTests.appmanager
         public ContactData GetContactInformationFromEditForm(int index)
         {
             manager.Navigator.OpenHomePage();
-            manager.ContactAtomic.InitContactModification(0);
+            manager.ContactAtomic.InitContactModification(index);
             string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
             string lastName = driver.FindElement(By.Name("lastname")).GetAttribute("value");
+            string middleName = driver.FindElement(By.Name("middlename")).GetAttribute("value");
+            string nickName = driver.FindElement(By.Name("nickname")).GetAttribute("value");
+            string title = driver.FindElement(By.Name("title")).GetAttribute("value");
 
+            string company = driver.FindElement(By.Name("company")).GetAttribute("value");
             string address = driver.FindElement(By.Name("address")).GetAttribute("value");
+            string secAddress = driver.FindElement(By.Name("address2")).GetAttribute("value");
 
             string homePhone = driver.FindElement(By.Name("home")).GetAttribute("value");
             string mobilePhone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
+            string faxPhone = driver.FindElement(By.Name("fax")).GetAttribute("value");
             string secHomePhone = driver.FindElement(By.Name("phone2")).GetAttribute("value");
 
             string email1 = driver.FindElement(By.Name("email")).GetAttribute("value");
             string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
             string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
 
-            string webAddress = driver.FindElement(By.Name("address2")).GetAttribute("value");
+            string webAddress = driver.FindElement(By.Name("homepage")).GetAttribute("value");
 
 
             return new ContactData()
             {
                 FirstName = firstName,
+                MiddleName = middleName,
                 LastName = lastName,
+                NickName = nickName,
                 Address = address,
+                SecondaryAddress = secAddress,
+                Title = title,
+                Company = company,
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
                 WorkPhone = workPhone,
+                FaxPhone = faxPhone,
                 SecondaryHomePhone = secHomePhone,
                 HomePage = webAddress,
                 Email1 = email1,
                 Email2 = email2,
                 Email3 = email3                              
             };
+        }
+
+        internal string SetContactInformationFromObject(int index)
+        {
+            ContactData contact = GetContactInformationFromEditForm(index);
+            string r = "\r";
+            string n = "\n";
+            string rn = r + n;
+            if (contact.FirstName != "")
+            {
+                contact.FirstName = contact.FirstName + " ";
+            }
+            if (contact.MiddleName != "")
+            {
+                contact.MiddleName = contact.MiddleName + " ";
+            }
+            if (contact.LastName != "")
+            {
+                contact.LastName = contact.LastName + rn;
+            }
+            if (contact.NickName != "")
+            {
+                contact.NickName = contact.NickName + rn;
+            }
+            if (contact.Title != "")
+            {
+                contact.Title = contact.Title + rn;
+            }
+            if (contact.Company != "")
+            {
+                contact.Company = contact.Company + rn;
+            }
+            if (contact.Address != "")
+            {
+                contact.Address = contact.Address + rn + rn;
+            }
+            if (contact.HomePhone != "")
+            {
+                contact.HomePhone = "H: " + contact.HomePhone + rn;
+            }
+            if (contact.WorkPhone != "")
+            {
+                contact.WorkPhone = "W: " + contact.WorkPhone + rn;
+            }
+            if (contact.FaxPhone != "")
+            {
+                contact.FaxPhone = "F: " + contact.FaxPhone + rn + rn;
+            }
+            if (contact.MobilePhone != "")
+            {
+                contact.MobilePhone = "M: " + contact.MobilePhone;
+            }
+            if (contact.Email1 != "")
+            {
+                contact.Email1 = contact.Email1 + rn;
+            }
+            if (contact.Email2 != "")
+            {
+                contact.Email2 = contact.Email2 + rn + rn;
+            }
+            if (contact.Email3 != "")
+            {
+                contact.Email3 = contact.Email3 + rn + rn + rn;
+            }
+            return
+                contact.FirstName +
+                contact.MiddleName  +
+                contact.LastName + 
+                contact.NickName + 
+                contact.Title + 
+                contact.Company + 
+                contact.Address + 
+                contact.HomePhone + 
+                contact.WorkPhone + 
+                contact.MobilePhone +
+                contact.FaxPhone +
+                contact.Email1 +
+                contact.Email2 + 
+                contact.Email3 + 
+                contact.SecondaryAddress; // И т.д.и т.п.              
+        }
+
+        internal string GetContactInformationFromDetails(int index)
+        {
+            manager.Navigator.OpenHomePage();
+            manager.ContactAtomic.GoToContactDetails(0);
+            IWebElement content = driver.FindElement(By.XPath("//div[@id='content']"));
+            return content.Text;
         }
 
         internal ContactData GetContactInformationFromTable(int index)
