@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WebTests.model
@@ -82,7 +84,7 @@ namespace WebTests.model
             {
                 return "";
             }
-            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+            return Regex.Replace(phone, "[-() ]", "") + "\r\n";// phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
         }
         private string CleanUpEmail(string email)
         {
@@ -125,7 +127,7 @@ namespace WebTests.model
         }
         public override string ToString()
         {
-            return "FirstName: " + FirstName + "LastName: " + LastName;
+            return "\nFirstName: " + FirstName + "\nLastName: " + LastName;
         }
     }
 }

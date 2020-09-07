@@ -37,7 +37,8 @@ namespace WebTests.model
         }
         public override string ToString()
         {
-            return "name=" + Name;
+            return "\nname=" + Name + "\nheader= " + Header + "\nfooter= " + Footer;
         }
+
     }
 }

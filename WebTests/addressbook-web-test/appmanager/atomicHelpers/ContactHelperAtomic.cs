@@ -73,6 +73,7 @@ namespace WebTests.appmanager.atomicHelpers
 
         public ContactHelperAtomic InitContactModification(int index)
         {
+            manager.Navigator.OpenHomePage();
             driver.FindElements(By.Name("entry"))[index]
                 .FindElements(By.TagName("td"))[7]
                 .FindElement(By.TagName("a")).Click();
@@ -81,14 +82,20 @@ namespace WebTests.appmanager.atomicHelpers
 
         public ContactHelperAtomic SelectContact(int index)
         {
-            //index += index;
             driver.FindElement(By.XPath("//tr[" + (index+2) /*счет начинается с "2"*/ + "]/td/input")).Click();
             return this;
         }
+        //public ContactHelperAtomic SelectContact(string beacon)
+        //{
+        //    SortBeaconContact(beacon);
+        //    driver.FindElement(By.XPath("//tr[2]/td/input")).Click();
+        //    return this;
+        //}
 
         public ContactHelperAtomic SelectContactForEdition(int index)
         {
-            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (index+1) + "]")).Click();
+            manager.Navigator.OpenHomePage();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (index + 1) + "]")).Click();
             return this;
         }
         public ContactHelperAtomic OpenEditAddressBookEntry()
@@ -121,6 +128,14 @@ namespace WebTests.appmanager.atomicHelpers
                 return "";
             }
             return email.Replace("r", "").Replace("n", "");            
+        }
+        public ContactHelperAtomic SortBeaconContact(string text)
+        {
+            manager.Navigator.OpenHomePage();
+            driver.FindElement(By.Name("searchstring")).Click();
+            driver.FindElement(By.Name("searchstring")).Clear();
+            driver.FindElement(By.Name("searchstring")).SendKeys(text);
+            return this;
         }
     }
 }

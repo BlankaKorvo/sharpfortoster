@@ -16,7 +16,7 @@ namespace WebTests.appmanager
 {
     public class GroupHelper : HelperBase
     {
-        public GroupHelper (ApplicationManager manager) : base(manager)
+        public GroupHelper(ApplicationManager manager) : base(manager)
         {
         }
 
@@ -31,7 +31,7 @@ namespace WebTests.appmanager
             return this;
         }
 
-        public GroupHelper EditGroup (GroupData group, int index)
+        public GroupHelper EditGroup(GroupData group, int index)
         {
             manager.Navigator.OpenGroupsPage();
             manager.GroupsAtomic.SelectGroup(index);
@@ -62,9 +62,9 @@ namespace WebTests.appmanager
         public GroupHelper CreateGroupIfExist(GroupData group)
         {
             if (!manager.GroupsAtomic.IsGroupPresent())
-                {
+            {
                 CreateGroup(group);
-                }
+            }
             return this;
         }
 

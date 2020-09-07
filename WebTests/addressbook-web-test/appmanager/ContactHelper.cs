@@ -32,7 +32,8 @@ namespace WebTests.appmanager
         public ContactData GetContactInformationFromEditForm(int index)
         {
             manager.Navigator.OpenHomePage();
-            manager.ContactAtomic.InitContactModification(index);
+            
+            manager.ContactAtomic.SelectContactForEdition(index);
             string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
             string lastName = driver.FindElement(By.Name("lastname")).GetAttribute("value");
             string middleName = driver.FindElement(By.Name("middlename")).GetAttribute("value");
@@ -74,7 +75,7 @@ namespace WebTests.appmanager
                 HomePage = webAddress,
                 Email1 = email1,
                 Email2 = email2,
-                Email3 = email3                              
+                Email3 = email3
             };
         }
 
@@ -142,26 +143,26 @@ namespace WebTests.appmanager
             }
             return
                 contact.FirstName +
-                contact.MiddleName  +
-                contact.LastName + 
-                contact.NickName + 
-                contact.Title + 
-                contact.Company + 
-                contact.Address + 
-                contact.HomePhone + 
-                contact.WorkPhone + 
+                contact.MiddleName +
+                contact.LastName +
+                contact.NickName +
+                contact.Title +
+                contact.Company +
+                contact.Address +
+                contact.HomePhone +
+                contact.WorkPhone +
                 contact.MobilePhone +
                 contact.FaxPhone +
                 contact.Email1 +
-                contact.Email2 + 
-                contact.Email3 + 
+                contact.Email2 +
+                contact.Email3 +
                 contact.SecondaryAddress; // И т.д.и т.п.              
         }
 
         internal string GetContactInformationFromDetails(int index)
         {
             manager.Navigator.OpenHomePage();
-            manager.ContactAtomic.GoToContactDetails(0);
+            manager.ContactAtomic.GoToContactDetails(index);
             IWebElement content = driver.FindElement(By.XPath("//div[@id='content']"));
             return content.Text;
         }
@@ -170,14 +171,14 @@ namespace WebTests.appmanager
         {
             manager.Navigator.OpenHomePage();
             IList<IWebElement> cells = driver.FindElements(By.Name("entry"))[index].FindElements(By.TagName("td"));
-            
+
             string lastName = cells[1].Text;
             string firstName = cells[2].Text;
             string address = cells[3].Text;
             string allEmails = cells[4].Text;
             string allPhones = cells[5].Text;
             string webAddress = cells[9].Text;
-           
+
             return new ContactData()
             {
                 FirstName = firstName,
@@ -192,7 +193,7 @@ namespace WebTests.appmanager
         public ContactHelper EditContact(ContactData contactData, int index)
         {
             manager.Navigator.ReturnToHomePage();
-            manager.ContactAtomic.SelectContactForEdition(index);
+            manager.ContactAtomic.InitContactModification(index);
             manager.ContactAtomic.FillContactForm(contactData);
             manager.ContactAtomic.SubmitEditContact();
             return this;
@@ -230,13 +231,20 @@ namespace WebTests.appmanager
                 foreach (IWebElement element in elements)
                 {
                     IReadOnlyList<IWebElement> tags = element.FindElements(By.TagName("td"));
-                    contactCache.Add(new ContactData() 
-                    { 
-                        FirstName = tags[2].Text, LastName = tags[1].Text 
+                    contactCache.Add(new ContactData()
+                    {
+                        FirstName = tags[2].Text, LastName = tags[1].Text
                     });
                 }
             }
             return new List<ContactData>(contactCache);
         }
+        public int GetNumberOfSearchResults()
+        {
+            string text = driver.FindElement(By.TagName("label")).Text;
+            Match m = new Regex(@"\d+").Match(text);
+            return Int32.Parse(m.Value);
+        }
+
     }
 }
