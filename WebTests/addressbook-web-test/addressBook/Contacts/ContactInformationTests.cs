@@ -41,7 +41,7 @@ namespace WebTests.addressBook.Contacts
 
             //action
             ContactData fromTable = app.Contacts.GetContactInformationFromTable(0);
-          ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0);
+            ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0);
 
             //verification
             Assert.AreEqual(fromTable, fromForm);

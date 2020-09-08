@@ -49,7 +49,10 @@ namespace WebTests.model
                 }
                 else 
                 {
-                    return (CleanUpPhone(HomePhone) + CleanUpPhone(MobilePhone) + CleanUpPhone(WorkPhone) + CleanUpPhone(SecondaryHomePhone)).Trim();
+                    //string.IsNullOrWhiteSpace(allPhones) ? null : allPhones;
+                    allPhones = (CleanUpPhone(HomePhone) + CleanUpPhone(MobilePhone) + CleanUpPhone(WorkPhone) + CleanUpPhone(SecondaryHomePhone)).Trim();
+                    //return string.IsNullOrWhiteSpace(allPhones) ? null : allPhones;
+                    return allPhones;
                 }
             }
             set 
