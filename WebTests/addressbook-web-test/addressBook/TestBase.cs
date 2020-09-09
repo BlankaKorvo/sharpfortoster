@@ -9,6 +9,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using NUnit.Framework.Internal;
 using WebTests.addressBook;
+using System.IO;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WebTests.addressBook
 {
@@ -32,9 +36,17 @@ namespace WebTests.addressBook
                 builder.Append(Convert.ToChar(32 + Convert.ToInt32(rnd.NextDouble() * 65)));
             }
             return builder.ToString();
+        }
 
+        public static IEnumerable<T> DataFromXmlFile<T>(string path)
+        {
+            return (List<T>)
+                new XmlSerializer(typeof(List<T>)).Deserialize(new StreamReader(path));
+        }
+
+        public static IEnumerable<T> DataFromJsonFile<T>(string path)
+        {
+            return JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(path));
         }
     }
-
-
 }

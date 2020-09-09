@@ -24,7 +24,7 @@ namespace WebTests.addressBook.Groups
                     Header = GenerateRandomString(100),
                     Footer = GenerateRandomString(100),
                     Name = GenerateRandomString(30)
-                }) ;
+                });
             }
             return groups;
         }
@@ -45,18 +45,6 @@ namespace WebTests.addressBook.Groups
             }
             return groups;
         }
-
-        public static IEnumerable<GroupData> GroupDataFromXmlFile()
-        {
-            return (List<GroupData>) 
-                new XmlSerializer(typeof(List<GroupData>)).Deserialize(new StreamReader(@"addressbook-web-test\groups.xml"));
-        }
-
-        public static IEnumerable<GroupData> GroupDataFromJsonFile()
-        {
-            return JsonConvert.DeserializeObject<List<GroupData>>(File.ReadAllText(@"addressbook-web-test\groups.json"));
-        }
-
         public static IEnumerable<GroupData> GroupDataFromExcelFile()
         {
             List<GroupData> groups = new List<GroupData>();
@@ -80,8 +68,18 @@ namespace WebTests.addressBook.Groups
             return groups;
         }
 
-        [Test, TestCaseSource("GroupDataFromExcelFile")]
-         public void CreateGroup(GroupData group)
+        public static IEnumerable<GroupData> GroupDataFromXmlFile(string path)
+        {
+            return DataFromXmlFile<GroupData>(path);
+        }
+
+        public static IEnumerable<GroupData> GroupDataFromJsonFile(string path)
+        {
+            return DataFromJsonFile<GroupData>(path);
+        }
+
+        [Test, TestCaseSource(nameof(GroupDataFromXmlFile), new object[] { @"addressbook-web-test\groups.xml" })]
+         public void CreateGroupFromXml(GroupData group)
         {
             //prepair
             // GroupData group = new GroupData() { Name = "Group1", Footer = "Footer1", Header = "Header" };
@@ -100,11 +98,10 @@ namespace WebTests.addressBook.Groups
             Assert.AreEqual(oldGroups, NewGroups);
         }
 
-        [Test]
-        public void CreateEmptyGroup()
+        [Test, TestCaseSource(nameof(GroupDataFromJsonFile), new object[] { @"addressbook-web-test\groups.json" })]
+        public void CreateGroupFromJson(GroupData group)
         {
             //prepair
-            GroupData group = new GroupData() { Name = "" };
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
             //action
