@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using LinqToDB.Mapping;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,17 @@ using System.Threading.Tasks;
 
 namespace WebTests.model
 {
+    [Table(Name ="addressbook")]
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
         private string allEmails;
+        [Column(Name = "id"), PrimaryKey]
+        public string Id { get; set; }
+        [Column(Name ="firstname")]
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
+        [Column(Name = "lastname")]
         public string LastName { get; set; }
         public string NickName { get; set; }
         public string Photo { get; set; }
@@ -38,7 +44,7 @@ namespace WebTests.model
         public string SecondaryAddress { get; set; }
         public string SecondaryHomePhone { get; set; }
         public string Note { get; set; }
-        public string Id { get; set; }
+        
         public string AllPhones
         {
             get
@@ -80,6 +86,8 @@ namespace WebTests.model
                 allEmails = value;
             }
         }
+        [Column(Name = "deprecated")]
+        public string Deprecated { get; set; }
 
         private string CleanUpPhone(string phone)
         {
@@ -131,6 +139,14 @@ namespace WebTests.model
         public override string ToString()
         {
             return "\nFirstName: " + FirstName + "\nLastName: " + LastName;
+        }
+
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from g in db.Contacts.Where(x => x.Deprecated == "0000-00-00 00:00:00") select g).ToList(); 
+            }
         }
     }
 }

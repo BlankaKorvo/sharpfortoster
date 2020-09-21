@@ -14,15 +14,16 @@ using System.Collections.Generic;
 namespace WebTests.addressBook.Groups
 {
     [TestFixture]
-    class GroupModification : AuthTestBase
+    class GroupModification : GroupTestBase
     {   
         [Test]
         public void EditGroup()
         {
             //prepair
             GroupData groupData = new GroupData() { Name = "nameGroup", Header = "headerGroup", Footer = "footerGroup" };
-            app.Groups.CreateGroupIfExist(groupData);            
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            app.Groups.CreateGroupIfExist(groupData);
+            List<GroupData> oldGroups = GroupData.GetAll();
+            //List<GroupData> oldGroups = app.Groups.GetGroupList();
             groupData.Name += groupData.Name;
             GroupData groupDataBefore = oldGroups[0];
 
@@ -33,12 +34,13 @@ namespace WebTests.addressBook.Groups
             int count = app.Groups.GetGroupCount();
             Assert.AreEqual(oldGroups.Count, count);
 
-            List<GroupData> NewGroups = app.Groups.GetGroupList();            
+            List<GroupData> newGroups = GroupData.GetAll();
+            //List<GroupData> NewGroups = app.Groups.GetGroupList();            
             oldGroups[0].Name = groupData.Name;
             oldGroups.Sort();
-            NewGroups.Sort();
-            Assert.AreEqual(oldGroups, NewGroups);
-            foreach (GroupData item in NewGroups)
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
+            foreach (GroupData item in newGroups)
             {
                 if (item.Id == groupDataBefore.Id)
                 {

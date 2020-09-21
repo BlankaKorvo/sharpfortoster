@@ -49,13 +49,13 @@ namespace WebTests.addressBook.Contacts
         public void CreateContactFormXml(ContactData contactData)
         {
             //prepair
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
 
             //action
             app.Contacts.CreateContact(contactData);
 
             //verification
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
             oldContacts.Add(contactData);
             oldContacts.Sort();
             newContacts.Sort();
@@ -65,13 +65,13 @@ namespace WebTests.addressBook.Contacts
         public void CreateContactFromJson(ContactData contactData)
         {
             //prepair
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
 
             //action
             app.Contacts.CreateContact(contactData);
 
             //verification
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAll();  //app.Contacts.GetContactList();
             oldContacts.Add(contactData);
             oldContacts.Sort();
             newContacts.Sort();
@@ -82,13 +82,13 @@ namespace WebTests.addressBook.Contacts
         {
             //prepair
             ContactData contactData = new ContactData() { FirstName = "g'f" };
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
 
             //action
             app.Contacts.CreateContact(contactData);
 
             //verification
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
             oldContacts.Add(contactData);
             oldContacts.Sort();
             newContacts.Sort();

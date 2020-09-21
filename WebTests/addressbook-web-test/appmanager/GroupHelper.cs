@@ -31,6 +31,8 @@ namespace WebTests.appmanager
             return this;
         }
 
+
+
         public GroupHelper EditGroup(GroupData group, int index)
         {
             manager.Navigator.OpenGroupsPage();
@@ -49,6 +51,13 @@ namespace WebTests.appmanager
             manager.GroupsAtomic.RemoveGroup();
             //groupCache = null;
             return this;
+        }
+
+        internal void Remove(GroupData group)
+        {
+            manager.Navigator.OpenGroupsPage();
+            manager.GroupsAtomic.SelectGroup(group.Id);
+            manager.GroupsAtomic.RemoveGroup();
         }
 
         public GroupHelper RemoveAllGroups()

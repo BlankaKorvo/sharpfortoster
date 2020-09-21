@@ -22,30 +22,31 @@ namespace WebTests.addressBook.Contacts
             //prepair
             ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
             app.Contacts.CreateContactIfExist(contact);
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll(); // app.Contacts.GetContactList();
 
             //action
             app.Contacts.RemoveContact(0);
 
             //verification
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+
+            List<ContactData> newContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
             oldContacts.RemoveAt(0);
             Assert.AreEqual(oldContacts, newContacts);
         }
 
-        [Test]
-        public void RemoveAllContact()
-        {
-            //prepair
-            ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
-            app.Contacts.CreateContactIfExist(contact);
+        //[Test]
+        //public void RemoveAllContact()
+        //{
+        //    //prepair
+        //    ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
+        //    app.Contacts.CreateContactIfExist(contact);
 
-            //action
-            app.Contacts.RemoveAllContact(0);
+        //    //action
+        //    app.Contacts.RemoveAllContact(0);
 
-            //verification
-            Assert.IsFalse(app.ContactAtomic.IsContactPresent());
-        }
+        //    //verification
+        //    Assert.IsFalse(app.ContactAtomic.IsContactPresent());
+        //}
 
     }
 }

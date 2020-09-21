@@ -22,6 +22,13 @@ namespace WebTests.appmanager.atomicHelpers
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
             return this;
         }
+        
+        internal GroupHelperAtomic SelectGroup(String id)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value = '"+id+"'])")).Click();
+            return this;
+        }
+
         public GroupHelperAtomic RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();

@@ -8,11 +8,12 @@ using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Linq;
 
 namespace WebTests.addressBook.Groups
 {
     [TestFixture]
-    public class GroupCreation : AuthTestBase
+    public class GroupCreation : GroupTestBase
     {
         public static IEnumerable<GroupData> RandomGroupDataProvider()
         {
@@ -83,15 +84,15 @@ namespace WebTests.addressBook.Groups
         {
             //prepair
             // GroupData group = new GroupData() { Name = "Group1", Footer = "Footer1", Header = "Header" };
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            List<GroupData> oldGroups = GroupData.GetAll();
 
             //action
             app.Groups.CreateGroup(group);
 
             //verification
-            Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetGroupCount());
+            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAll().Count);
 
-            List<GroupData> NewGroups = app.Groups.GetGroupList();
+            List<GroupData> NewGroups = GroupData.GetAll();
             oldGroups.Add(group);
             oldGroups.Sort();
             NewGroups.Sort();
@@ -102,15 +103,15 @@ namespace WebTests.addressBook.Groups
         public void CreateGroupFromJson(GroupData group)
         {
             //prepair
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            List<GroupData> oldGroups = GroupData.GetAll();
 
             //action
             app.Groups.CreateGroup(group);
 
             //verification
-            Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetGroupCount());
+            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAll().Count);
 
-            List<GroupData> NewGroups = app.Groups.GetGroupList();
+            List<GroupData> NewGroups = GroupData.GetAll();
             oldGroups.Add(group);
             oldGroups.Sort();
             NewGroups.Sort();
@@ -122,19 +123,42 @@ namespace WebTests.addressBook.Groups
         {
             //prepair
             GroupData group = new GroupData() {Name = "a'a" };
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            List<GroupData> oldGroups = GroupData.GetAll();
 
             //action
             app.Groups.CreateGroup(group);
 
             //verification
-            Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetGroupCount());
+            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAll());
 
-            List<GroupData> NewGroups = app.Groups.GetGroupList();
+            List<GroupData> NewGroups = GroupData.GetAll();
             oldGroups.Add(group);
             oldGroups.Sort();
             NewGroups.Sort();
             Assert.AreEqual(oldGroups, NewGroups);
+        }
+
+        [Test]
+        public void TestDBConnection()
+        {
+            DateTime start = DateTime.Now;
+            List<GroupData> fromUi = GroupData.GetAll();
+            DateTime end = DateTime.Now;
+            System.Console.Out.WriteLine(end.Subtract(start));
+
+            start = DateTime.Now;
+            List<GroupData> fromDB = GroupData.GetAll();
+            end = DateTime.Now;
+            System.Console.Out.WriteLine(end.Subtract(start));
+        }
+
+        [Test]
+        public void TestDBConnectivity()
+        {
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            {
+                System.Console.Out.WriteLine(contact.Deprecated);
+            }
         }
     }
 }

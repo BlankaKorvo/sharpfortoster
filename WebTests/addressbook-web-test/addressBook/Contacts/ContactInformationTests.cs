@@ -25,8 +25,8 @@ namespace WebTests.addressBook.Contacts
             app.Contacts.CreateContact(contactData);
 
             //action
-            string fromObject = app.Contacts.SetContactInformationFromObject(0);
-            string fromDetails = app.Contacts.GetContactInformationFromDetails(0);
+            string fromObject = app.Contacts.SetContactInformationFromObject(0).Trim();
+            string fromDetails = app.Contacts.GetContactInformationFromDetails(0).Trim();
 
             
             //verification
