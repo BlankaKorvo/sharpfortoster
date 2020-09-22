@@ -114,6 +114,8 @@ namespace WebTests.appmanager
             manager.Navigator.OpenGroupsPage();
             return driver.FindElements(By.CssSelector("span.group")).Count;
         }
+
+
     }
 }
 

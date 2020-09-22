@@ -141,12 +141,22 @@ namespace WebTests.model
             return "\nFirstName: " + FirstName + "\nLastName: " + LastName;
         }
 
-        public static List<ContactData> GetAll()
+        public static List<ContactData> GetAllContacts()
         {
             using (AddressBookDB db = new AddressBookDB())
             {
                 return (from g in db.Contacts.Where(x => x.Deprecated == "0000-00-00 00:00:00") select g).ToList(); 
             }
+
         }
+        //public static List<ContactData> GetContactsFromGroup(GroupData group)
+        //{
+        //    using (AddressBookDB db = new AddressBookDB())
+        //    {
+        //    return (from contact in db.Contacts
+        //            from gcr in db.GCR.Where(x => x.GroupId == @group.Id && x.ContactId == contact.Id && contact.Deprecated == "0000-00-00 00:00:00")
+        //            select contact).Distinct().ToList();
+        //    }
+        //}
     }
 }

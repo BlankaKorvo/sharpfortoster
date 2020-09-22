@@ -17,6 +17,8 @@ namespace WebTests.appmanager
 {
     public class ContactHelper : HelperBase
     {
+        public object SubmitRemoveContactFormGroup { get; private set; }
+
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
         }
@@ -40,6 +42,21 @@ namespace WebTests.appmanager
                 .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
         }
 
+        internal void RemoveContactFromGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.OpenHomePage();
+            SubmitGroupFilter(group.Name);
+            SelectContact(contact.Id);
+            CommitRemoveContactFormGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+
+        private void CommitRemoveContactFormGroup()
+        {
+            driver.FindElement(By.Name("remove")).Click();
+        }
+
         private void CommitAddingContactToGroup()
         {
             driver.FindElement(By.Name("add")).Click();
@@ -59,6 +76,12 @@ namespace WebTests.appmanager
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
+
+        private void SubmitGroupFilter(string groupName)
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(groupName);
+        }
+
 
         public ContactData GetContactInformationFromEditForm(int index)
         {

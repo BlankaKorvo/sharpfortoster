@@ -132,7 +132,7 @@
     <Compile Include="addressBook\AuthTestBase.cs" />
     <Compile Include="addressBook\Contacts\ContactInformationTests.cs" />
     <Compile Include="addressBook\ContactTestBase.cs" />
-    <Compile Include="addressBook\Groups\AddingContactToGroupTests.cs" />
+    <Compile Include="addressBook\Groups\ContactToGroupTests.cs" />
     <Compile Include="addressBook\GroupTestBase.cs" />
     <Compile Include="addressBook\LoginLogout\Login.cs" />
     <Compile Include="appmanager\atomicHelpers\ContactHelperAtomic.cs" />

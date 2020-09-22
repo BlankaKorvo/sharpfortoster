@@ -22,7 +22,7 @@ namespace WebTests.addressBook.Contacts
             //prepair
             ContactData contact = new ContactData() { FirstName = "Иван", MiddleName = "Васильевич", LastName = "Иванов" };
             app.Contacts.CreateContactIfExist(contact);
-            List<ContactData> oldContacts = ContactData.GetAll();// app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAllContacts();// app.Contacts.GetContactList();
             contact.FirstName += contact.FirstName;
             contact.LastName += contact.LastName;
             contact.MiddleName += contact.MiddleName;
@@ -31,7 +31,7 @@ namespace WebTests.addressBook.Contacts
             app.Contacts.EditContact(contact, 0);
 
             //verification
-            List<ContactData> newContacts = ContactData.GetAll();// app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAllContacts();// app.Contacts.GetContactList();
             oldContacts[0].FirstName = contact.FirstName;
             oldContacts[0].LastName = contact.LastName;
             oldContacts.Sort();

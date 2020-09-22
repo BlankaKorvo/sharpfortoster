@@ -22,14 +22,14 @@ namespace WebTests.addressBook.Contacts
             //prepair
             ContactData contact = new ContactData() { FirstName = "zhertva", MiddleName = "zhertva", LastName = "zhertva" };
             app.Contacts.CreateContactIfExist(contact);
-            List<ContactData> oldContacts = ContactData.GetAll(); // app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAllContacts(); // app.Contacts.GetContactList();
 
             //action
             app.Contacts.RemoveContact(0);
 
             //verification
 
-            List<ContactData> newContacts = ContactData.GetAll(); //app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAllContacts(); //app.Contacts.GetContactList();
             oldContacts.RemoveAt(0);
             Assert.AreEqual(oldContacts, newContacts);
         }
