@@ -67,7 +67,7 @@ namespace WebTests.addressBook.Groups
         }
 
         [Test]
-        public void TestRemovalContactToGroup()
+        public void TestRemovalContactFromGroup()
         {
             //prepair
             GroupData newGroup = new GroupData() { Name = "groupWhictAddingContact" };
