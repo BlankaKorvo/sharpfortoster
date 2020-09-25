@@ -22,7 +22,7 @@ namespace WebTests.addressBook.Groups
             //prepair
             GroupData groupData = new GroupData() { Name = "nameGroup", Header = "headerGroup", Footer = "footerGroup" };
             app.Groups.CreateGroupIfExist(groupData);
-            List<GroupData> oldGroups = GroupData.GetAll();
+            List<GroupData> oldGroups = GroupData.GetAllGroups();
             //List<GroupData> oldGroups = app.Groups.GetGroupList();
             groupData.Name += groupData.Name;
             GroupData groupDataBefore = oldGroups[0];
@@ -34,7 +34,7 @@ namespace WebTests.addressBook.Groups
             int count = app.Groups.GetGroupCount();
             Assert.AreEqual(oldGroups.Count, count);
 
-            List<GroupData> newGroups = GroupData.GetAll();
+            List<GroupData> newGroups = GroupData.GetAllGroups();
             //List<GroupData> NewGroups = app.Groups.GetGroupList();            
             oldGroups[0].Name = groupData.Name;
             oldGroups.Sort();

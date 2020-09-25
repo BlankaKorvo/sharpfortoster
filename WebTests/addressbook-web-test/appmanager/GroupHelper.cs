@@ -70,7 +70,7 @@ namespace WebTests.appmanager
 
         public GroupHelper CreateGroupIfExist(GroupData group)
         {
-            if (!manager.GroupsAtomic.IsGroupPresent())
+            if (!manager.GroupsAtomic.IsGroupPresentDB())
             {
                 CreateGroup(group);
             }

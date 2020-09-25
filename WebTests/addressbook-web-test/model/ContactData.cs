@@ -149,14 +149,14 @@ namespace WebTests.model
             }
 
         }
-        //public static List<ContactData> GetContactsFromGroup(GroupData group)
-        //{
-        //    using (AddressBookDB db = new AddressBookDB())
-        //    {
-        //    return (from contact in db.Contacts
-        //            from gcr in db.GCR.Where(x => x.GroupId == @group.Id && x.ContactId == contact.Id && contact.Deprecated == "0000-00-00 00:00:00")
-        //            select contact).Distinct().ToList();
-        //    }
-        //}
+        public List<GroupData> GetGroups()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from g in db.Groups
+                        from gcr in db.GCR.Where(p => p.ContactId == Id  && p.GroupId == g.Id && g.Deprecated == "0000-00-00 00:00:00")
+                        select g).Distinct().ToList();
+            }
+        }
     }
 }

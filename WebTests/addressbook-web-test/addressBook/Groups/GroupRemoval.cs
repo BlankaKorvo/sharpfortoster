@@ -23,7 +23,7 @@ namespace WebTests.addressBook.Groups
             //prepair
             GroupData group = new GroupData() { Name = "zhertva", Footer = "zhertva", Header = "zhertva" };
             app.Groups.CreateGroupIfExist(group);
-            List<GroupData> oldGroups = GroupData.GetAll();
+            List<GroupData> oldGroups = GroupData.GetAllGroups();
             //List<GroupData> oldGroups = GroupData.GetAll();
             GroupData toBeRemoved = oldGroups[0];
 
@@ -33,7 +33,7 @@ namespace WebTests.addressBook.Groups
             //verification
             Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetGroupCount());
 
-            List<GroupData> newGroups = GroupData.GetAll();
+            List<GroupData> newGroups = GroupData.GetAllGroups();
             //GroupData toBeRemoved = oldGroups[0];
             oldGroups.RemoveAt(0);
             Assert.AreEqual(oldGroups, newGroups);

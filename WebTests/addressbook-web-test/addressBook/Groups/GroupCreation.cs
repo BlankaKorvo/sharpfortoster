@@ -84,15 +84,15 @@ namespace WebTests.addressBook.Groups
         {
             //prepair
             // GroupData group = new GroupData() { Name = "Group1", Footer = "Footer1", Header = "Header" };
-            List<GroupData> oldGroups = GroupData.GetAll();
+            List<GroupData> oldGroups = GroupData.GetAllGroups();
 
             //action
             app.Groups.CreateGroup(group);
 
             //verification
-            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAll().Count);
+            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAllGroups().Count);
 
-            List<GroupData> NewGroups = GroupData.GetAll();
+            List<GroupData> NewGroups = GroupData.GetAllGroups();
             oldGroups.Add(group);
             oldGroups.Sort();
             NewGroups.Sort();
@@ -103,15 +103,15 @@ namespace WebTests.addressBook.Groups
         public void CreateGroupFromJson(GroupData group)
         {
             //prepair
-            List<GroupData> oldGroups = GroupData.GetAll();
+            List<GroupData> oldGroups = GroupData.GetAllGroups();
 
             //action
             app.Groups.CreateGroup(group);
 
             //verification
-            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAll().Count);
+            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAllGroups().Count);
 
-            List<GroupData> NewGroups = GroupData.GetAll();
+            List<GroupData> NewGroups = GroupData.GetAllGroups();
             oldGroups.Add(group);
             oldGroups.Sort();
             NewGroups.Sort();
@@ -123,15 +123,15 @@ namespace WebTests.addressBook.Groups
         {
             //prepair
             GroupData group = new GroupData() {Name = "a'a" };
-            List<GroupData> oldGroups = GroupData.GetAll();
+            List<GroupData> oldGroups = GroupData.GetAllGroups();
 
             //action
             app.Groups.CreateGroup(group);
 
             //verification
-            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAll());
+            Assert.AreEqual(oldGroups.Count + 1, GroupData.GetAllGroups());
 
-            List<GroupData> NewGroups = GroupData.GetAll();
+            List<GroupData> NewGroups = GroupData.GetAllGroups();
             oldGroups.Add(group);
             oldGroups.Sort();
             NewGroups.Sort();
@@ -142,12 +142,12 @@ namespace WebTests.addressBook.Groups
         public void TestDBConnection()
         {
             DateTime start = DateTime.Now;
-            List<GroupData> fromUi = GroupData.GetAll();
+            List<GroupData> fromUi = GroupData.GetAllGroups();
             DateTime end = DateTime.Now;
             System.Console.Out.WriteLine(end.Subtract(start));
 
             start = DateTime.Now;
-            List<GroupData> fromDB = GroupData.GetAll();
+            List<GroupData> fromDB = GroupData.GetAllGroups();
             end = DateTime.Now;
             System.Console.Out.WriteLine(end.Subtract(start));
         }
@@ -155,7 +155,7 @@ namespace WebTests.addressBook.Groups
         [Test]
         public void TestDBConnectivity()
         {
-            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            foreach (ContactData contact in GroupData.GetAllGroups()[0].GetContacts())
             {
                 System.Console.Out.WriteLine(contact.Deprecated);
             }

@@ -28,6 +28,8 @@ namespace WebTests.appmanager
             manager.ContactAtomic.OpenEditAddressBookEntry();
             manager.ContactAtomic.FillContactForm(contactData);
             manager.ContactAtomic.SubmitContactCreation();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
             return this;
         }
 

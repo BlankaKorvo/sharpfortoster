@@ -9,6 +9,7 @@ using WebTests.model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
 
 namespace WebTests.appmanager.atomicHelpers
 {
@@ -19,13 +20,13 @@ namespace WebTests.appmanager.atomicHelpers
         }
         public GroupHelperAtomic SelectGroup(int index)
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index + 1) + "]")).Click();
             return this;
         }
-        
+
         internal GroupHelperAtomic SelectGroup(String id)
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value = '"+id+"'])")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value = '" + id + "'])")).Click();
             return this;
         }
 
@@ -44,7 +45,7 @@ namespace WebTests.appmanager.atomicHelpers
 
         public GroupHelperAtomic FillGroupForm(GroupData groupData)
         {
-            FillinigTextField(By.Name("group_name"), groupData.Name); 
+            FillinigTextField(By.Name("group_name"), groupData.Name);
             FillinigTextField(By.Name("group_header"), groupData.Header);
             FillinigTextField(By.Name("group_footer"), groupData.Footer);
             return this;
@@ -88,5 +89,16 @@ namespace WebTests.appmanager.atomicHelpers
             return IsElementPresent(By.ClassName("group"));
         }
 
+        public bool IsGroupPresentDB()
+        {
+            if (GroupData.GetAllGroups().Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

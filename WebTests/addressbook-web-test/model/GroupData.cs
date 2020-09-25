@@ -17,6 +17,8 @@ namespace WebTests.model
         public string Footer { get; set; }
         [Column(Name = "group_id"), PrimaryKey, Identity]
         public string Id { get; set; }
+        [Column(Name = "deprecated")]
+        public string Deprecated { get; set; }
 
         public int CompareTo(GroupData other)
         {
@@ -47,11 +49,11 @@ namespace WebTests.model
             return "\nname=" + Name + "\nheader= " + Header + "\nfooter= " + Footer;
         }
 
-        public static List<GroupData> GetAll()
+        public static List<GroupData> GetAllGroups()
         {                
             using (AddressBookDB db = new AddressBookDB())
             {
-                var x = (from g in db.Groups select g).ToList();
+                var x = (from g in db.Groups.Where(q => q.Deprecated == "0000-00-00 00:00:00") select g).ToList();
                 return x;
             }
         }
